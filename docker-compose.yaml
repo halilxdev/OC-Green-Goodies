@@ -6,8 +6,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: green_goodies
-      MYSQL_USER: symfony
-      MYSQL_PASSWORD: symfony
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
     ports:
       - "3306:3306"
     volumes:
@@ -46,7 +46,7 @@ services:
     networks:
       - green_goodies_network
     environment:
-      DATABASE_URL: "mysql://symfony:symfony@database:3306/green_goodies?serverVersion=8.0"
+      DATABASE_URL: "mysql://root:root@database:3306/green_goodies?serverVersion=8.0"
 
   # Frontend Symfony
   frontend:
