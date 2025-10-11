@@ -17,7 +17,7 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 ## Liens accessibles
 
 * http://localhost:8080/ `Pour le front-end`
-* http://localhost:8000/ `Pour le back-end (pas utile car pas de HTML renvoyé)`
+* http://localhost:8000/ `Pour le back-end (pas utile de s'y rendre car pas de HTML renvoyé)`
 * http://localhost:8081/ `Pour PHPMyAdmin`
 
 ## Liste de commandes
@@ -32,4 +32,5 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 
 # To-do list !
 
-[x] Dockeriser le projet
+- [x] Dockeriser le projet
+- [ ] Réaliser le modèle physique de données
