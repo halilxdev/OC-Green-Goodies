@@ -1,0 +1,73 @@
+services:
+  # Base de données MySQL
+  database:
+    image: mysql:8.0
+    container_name: green_goodies_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: green_goodies
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: symfony
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - green_goodies_network
+
+  # phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: green_goodies_phpmyadmin
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8081:80"
+    depends_on:
+      - database
+    networks:
+      - green_goodies_network
+
+  # Backend API Symfony
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: green_goodies_backend
+    volumes:
+      - ./backend:/var/www/backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+    networks:
+      - green_goodies_network
+    environment:
+      DATABASE_URL: "mysql://symfony:symfony@database:3306/green_goodies?serverVersion=8.0"
+
+  # Frontend Symfony
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: green_goodies_frontend
+    volumes:
+      - ./frontend:/var/www/frontend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+    networks:
+      - green_goodies_network
+    environment:
+      API_URL: "http://backend:8000"
+
+volumes:
+  db_data:
+
+networks:
+  green_goodies_network:
+    driver: bridge

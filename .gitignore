@@ -1,0 +1,33 @@
+# Environnement
+.env.local
+.env.*.local
+
+# Dépendances
+backend/vendor/
+frontend/vendor/
+backend/node_modules/
+frontend/node_modules/
+
+# Cache Symfony
+backend/var/
+frontend/var/
+
+# Logs
+*.log
+
+# Base de données locale
+*.sqlite
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
