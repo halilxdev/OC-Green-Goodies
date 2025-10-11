@@ -36,7 +36,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: green_goodies_backend
+    container_name: backend
     volumes:
       - ./backend:/var/www/backend
     ports:
@@ -53,7 +53,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: green_goodies_frontend
+    container_name: frontend
     volumes:
       - ./frontend:/var/www/frontend
     ports:
