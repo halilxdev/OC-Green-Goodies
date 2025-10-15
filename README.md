@@ -34,7 +34,7 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 
 ## To-do list !
 
-- [ ] Créer et configurez votre base de données.
+- [x] Créer et configurez votre base de données.
 - [ ] Créer les entités à partir du modèle des données et les repositories associés.
 - [ ] Créer quelques produits à l’aide de fixtures.
 - [ ] Commencer l’intégration des maquettes, en réalisant la structure générale (header / footer).
