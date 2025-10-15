@@ -3,7 +3,9 @@
 # Green Goodies — Site e-commerce
 
 > J'ai réalisé ce projet lors de ma formation OpenClassRooms. Ce projet implique la création en Symfony d'un front-end et d'un back-end API.
+
 > J'ai choisi délibérement de dissocier le front-end et le back-end pour des raisons de bonne pratique.
+
 > J'ai également pris la liberté d'utiliser Docker.
 
 ## Lancer le projet
@@ -32,11 +34,13 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 
 ## To-do list !
 
-- [x] Dockeriser le projet
-- [ ] Réaliser le modèle physique de données
+- [ ] Créer et configurez votre base de données.
+- [ ] Créer les entités à partir du modèle des données et les repositories associés.
+- [ ] Créer quelques produits à l’aide de fixtures.
+- [ ] Commencer l’intégration des maquettes, en réalisant la structure générale (header / footer).
 
 ## Cheatsheet
 
 ### Git
 
-`git commit --allow-empty-message -m ''` Commit sans message
+* `git commit --allow-empty-message -m ''` Commit sans message
