@@ -16,9 +16,9 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 
 ## Liens accessibles
 
-* http://localhost:8080/ `Pour le front-end`
-* http://localhost:8000/ `Pour le back-end (pas utile de s'y rendre car pas de HTML renvoyé)`
-* http://localhost:8081/ `Pour PHPMyAdmin`
+* http://localhost:8080/    Pour le front-end`
+* http://localhost:8000/    Pour le back-end (pas utile de s'y rendre car pas de HTML renvoyé)`
+* http://localhost:8081/    Pour PHPMyAdmin`
 
 ## Liste de commandes
 
@@ -30,7 +30,13 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 #### Création de la base de données
 * `docker exec -it backend php bin/console doctrine:database:create`
 
-# To-do list !
+## To-do list !
 
 - [x] Dockeriser le projet
 - [ ] Réaliser le modèle physique de données
+
+## Cheatsheet
+
+### Git
+
+`git commit --allow-empty-message -m ''` Commit sans message
