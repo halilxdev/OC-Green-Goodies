@@ -31,6 +31,18 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 
 #### Création de la base de données
 * `docker exec -it backend php bin/console doctrine:database:create`
+#### Suppression de la base de données
+En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le dossier `migrations` et exécutez cette commande
+* `docker exec -it backend php bin/console doctrine:database:drop --force`
+#### Mise à jour de la base de données
+* `docker exec -it backend php bin/console make:migration`
+* `docker exec -it backend php bin/console doctrine:migrations:migrate`
+#### Création des fixtures pour avoir des données prédéfinies dans la base de données
+* `docker exec -it backend php bin/console doctrine:fixtures:load`
+
+
+## Fixtures
+docker-compose exec php php bin/console doctrine:fixtures:load
 
 ## To-do list !
 
