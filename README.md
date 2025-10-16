@@ -39,7 +39,7 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 - [ ] Créer quelques produits à l’aide de fixtures.
 - [ ] Commencer l’intégration des maquettes, en réalisant la structure générale (header / footer).
 
-![Logo Green Goodies](https://github.com/halilxdev/OC-Green-Goodies/blob/main/misc/UML.png)
+![Diagramme UML](https://github.com/halilxdev/OC-Green-Goodies/blob/main/misc/UML.png)
 
 ## Cheatsheet
 
