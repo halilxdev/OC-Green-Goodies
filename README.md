@@ -40,15 +40,12 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 #### Création des fixtures pour avoir des données prédéfinies dans la base de données
 * `docker exec -it backend php bin/console doctrine:fixtures:load`
 
-
-## Fixtures
-docker-compose exec php php bin/console doctrine:fixtures:load
-
 ## To-do list !
 
 - [x] Créer et configurez votre base de données.
-- [ ] Créer les entités à partir du modèle des données et les repositories associés.
-- [ ] Créer quelques produits à l’aide de fixtures.
+- [x] Créer les entités à partir du modèle des données et les repositories associés.
+- [x] Créer quelques produits à l’aide de fixtures.
+- [ ] Rendre la création de données à partir des entités sécurisées (Symfony Asserts)
 - [ ] Commencer l’intégration des maquettes, en réalisant la structure générale (header / footer).
 
 ![Diagramme UML](https://github.com/halilxdev/OC-Green-Goodies/blob/Entities/misc/UML.png)
