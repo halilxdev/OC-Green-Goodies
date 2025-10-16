@@ -56,3 +56,4 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 
 * `git commit -m 'Contenu du commit'` Commit avec message
 * `git commit --allow-empty-message -m ''` Commit sans message
+* `git add -u .` Commit avec suppression des fichiers supprimés localement // Il faut être à la racine du projet

@@ -41,7 +41,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $lastName = null;
 
     #[ORM\Column]
-    private ?bool $hasAPIAccess = null;
+    private ?bool $hasApiAccess = null;
 
     /**
      * @var Collection<int, Order>
@@ -172,14 +172,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function hasAPIAccess(): ?bool
+    public function hasApiAccess(): ?bool
     {
-        return $this->hasAPIAccess;
+        return $this->hasApiAccess;
     }
 
-    public function setHasAPIAccess(bool $hasAPIAccess): static
+    public function setHasApiAccess(bool $hasApiAccess): static
     {
-        $this->hasAPIAccess = $hasAPIAccess;
+        $this->hasApiAccess = $hasApiAccess;
 
         return $this;
     }
