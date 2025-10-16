@@ -18,9 +18,9 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 
 ## Liens accessibles
 
-* http://localhost:8080/    Pour le front-end`
-* http://localhost:8000/    Pour le back-end (pas utile de s'y rendre car pas de HTML renvoyé)`
-* http://localhost:8081/    Pour PHPMyAdmin`
+* http://localhost:8080/    Pour le front-end
+* http://localhost:8000/    Pour le back-end (pas utile de s'y rendre car pas de HTML renvoyé)
+* http://localhost:8081/    Pour PHPMyAdmin
 
 ## Liste de commandes
 
@@ -39,8 +39,11 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 - [ ] Créer quelques produits à l’aide de fixtures.
 - [ ] Commencer l’intégration des maquettes, en réalisant la structure générale (header / footer).
 
+![Logo Green Goodies](https://github.com/halilxdev/OC-Green-Goodies/blob/main/misc/UML.png)
+
 ## Cheatsheet
 
 ### Git
 
+* `git commit -m 'Contenu du commit'` Commit avec message
 * `git commit --allow-empty-message -m ''` Commit sans message
