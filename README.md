@@ -42,11 +42,18 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 
 ## To-do list !
 
+### BACK-END
+
 - [x] Créer et configurez votre base de données.
 - [x] Créer les entités à partir du modèle des données et les repositories associés.
 - [x] Créer quelques produits à l’aide de fixtures.
 - [x] Retravailler la base de données. (Tableau relationnel `order_item_product` inutile)
-- [ ] Rendre la création de données à partir des entités sécurisé (Symfony Asserts)
+- [ ] Créer des routes avec des verbes HTTP `GET, POST, PUT, DELETE` pour l'entité `User`
+- [ ] Rendre sécurisé la création de données à partir des entités (Symfony Asserts)
+
+### FRONT-END
+
+- [ ] Se renseigner sur le [CSS/JS Minifier](https://github.com/sensiolabs/minify-bundle)
 - [ ] Commencer l’intégration des maquettes, en réalisant la structure générale (header / footer).
 
 ![Diagramme UML](https://github.com/halilxdev/OC-Green-Goodies/blob/Entities/misc/UML.png)
