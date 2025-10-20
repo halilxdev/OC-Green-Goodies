@@ -21,18 +21,18 @@ class Order
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    /**
-     * @var Collection<int, OrderItem>
-     */
-    #[ORM\OneToMany(targetEntity: OrderItem::class, mappedBy: 'orderObject', orphanRemoval: true)]
-    private Collection $item;
-
     #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
     private ?string $totalPriceNoVAT = null;
 
+    /**
+     * @var Collection<int, Item>
+     */
+    #[ORM\OneToMany(targetEntity: Item::class, mappedBy: 'orderClass', orphanRemoval: true)]
+    private Collection $items;
+
     public function __construct()
     {
-        $this->item = new ArrayCollection();
+        $this->items = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -52,36 +52,6 @@ class Order
         return $this;
     }
 
-    /**
-     * @return Collection<int, OrderItem>
-     */
-    public function getItem(): Collection
-    {
-        return $this->item;
-    }
-
-    public function addItem(OrderItem $item): static
-    {
-        if (!$this->item->contains($item)) {
-            $this->item->add($item);
-            $item->setOrderObject($this);
-        }
-
-        return $this;
-    }
-
-    public function removeItem(OrderItem $item): static
-    {
-        if ($this->item->removeElement($item)) {
-            // set the owning side to null (unless already changed)
-            if ($item->getOrderObject() === $this) {
-                $item->setOrderObject(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getTotalPriceNoVAT(): ?string
     {
         return $this->totalPriceNoVAT;
@@ -90,6 +60,36 @@ class Order
     public function setTotalPriceNoVAT(string $totalPriceNoVAT): static
     {
         $this->totalPriceNoVAT = $totalPriceNoVAT;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Item>
+     */
+    public function getItems(): Collection
+    {
+        return $this->items;
+    }
+
+    public function addItem(Item $item): static
+    {
+        if (!$this->items->contains($item)) {
+            $this->items->add($item);
+            $item->setOrderClass($this);
+        }
+
+        return $this;
+    }
+
+    public function removeItem(Item $item): static
+    {
+        if ($this->items->removeElement($item)) {
+            // set the owning side to null (unless already changed)
+            if ($item->getOrderClass() === $this) {
+                $item->setOrderClass(null);
+            }
+        }
 
         return $this;
     }

@@ -20,10 +20,10 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $shortDescription = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $fullDescription = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
     private ?string $price = null;
 
     #[ORM\Column(length: 255)]
@@ -63,7 +63,7 @@ class Product
         return $this->fullDescription;
     }
 
-    public function setFullDescription(string $fullDescription): static
+    public function setFullDescription(?string $fullDescription): static
     {
         $this->fullDescription = $fullDescription;
 

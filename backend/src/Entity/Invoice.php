@@ -18,10 +18,10 @@ class Invoice
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Order $orderObject = null;
+    private ?Order $orderClass = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
-    private ?string $VAT = null;
+    private ?string $vat = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
     private ?string $total = null;
@@ -43,26 +43,26 @@ class Invoice
         return $this->id;
     }
 
-    public function getOrderObject(): ?Order
+    public function getOrderClass(): ?Order
     {
-        return $this->orderObject;
+        return $this->orderClass;
     }
 
-    public function setOrderObject(Order $orderObject): static
+    public function setOrderClass(Order $orderClass): static
     {
-        $this->orderObject = $orderObject;
+        $this->orderClass = $orderClass;
 
         return $this;
     }
 
-    public function getVAT(): ?string
+    public function getVat(): ?string
     {
-        return $this->VAT;
+        return $this->vat;
     }
 
-    public function setVAT(string $VAT): static
+    public function setVat(string $vat): static
     {
-        $this->VAT = $VAT;
+        $this->vat = $vat;
 
         return $this;
     }
