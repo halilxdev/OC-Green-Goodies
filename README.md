@@ -12,7 +12,7 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 
 * `docker compose up -d --build` pour lancer les containers pour la première fois
 * `docker compose up -d` pour lancer les containers
-* `docker compose down` pour clôtirer les containers
+* `docker compose down` pour éteindre les containers
 
 ## Liens accessibles
 
@@ -43,7 +43,8 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 ### BACK-END
 
 - [x] Créer et configurez votre base de données.
-- [x] Créer les entités à partir du modèle des données et les repositories associés.
+- [x] Créer les entités à partir du modèle des données et les repositories associés.  
+![Diagramme UML](https://github.com/halilxdev/OC-Green-Goodies/blob/Entities/misc/UML.png)  
 - [x] Créer quelques produits à l’aide de fixtures.
 - [x] Retravailler la base de données. (Tableau relationnel `order_item_product` inutile)
 - [ ] Créer des routes avec des verbes HTTP `GET, POST, PUT, DELETE` pour l'entité `User`
@@ -53,8 +54,6 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 
 - [x] Commencer l’intégration des maquettes, en réalisant la structure générale (header / footer).
 - [ ] Se renseigner sur le [CSS/JS Minifier](https://github.com/sensiolabs/minify-bundle)
-
-![Diagramme UML](https://github.com/halilxdev/OC-Green-Goodies/blob/Entities/misc/UML.png)
 
 ## Cheatsheet
 
