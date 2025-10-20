@@ -53,8 +53,8 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 
 ### FRONT-END
 
+- [x] Commencer l’intégration des maquettes, en réalisant la structure générale (header / footer).
 - [ ] Se renseigner sur le [CSS/JS Minifier](https://github.com/sensiolabs/minify-bundle)
-- [ ] Commencer l’intégration des maquettes, en réalisant la structure générale (header / footer).
 
 ![Diagramme UML](https://github.com/halilxdev/OC-Green-Goodies/blob/Entities/misc/UML.png)
 
