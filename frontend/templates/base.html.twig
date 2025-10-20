@@ -2,9 +2,18 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>
+            {% if block('title') %}
+                {% block title %}{% endblock %} - 
+            {% endif %}
+            GreenGoodies
+        </title>
+
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
+            <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('css/header.css') }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('css/footer.css') }}" rel="stylesheet" type="text/css"/>
         {% endblock %}
 
         {% block javascripts %}
@@ -12,6 +21,52 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+        <header>
+            {% block header %}
+
+                <a href="{{ path('home') }}">
+                    <div class="headerHomeLogo">
+                        <div class="headerLogo">
+                            g
+                        </div>
+                        <div class="headerLogoText">
+                            Green Goodies
+                        </div>
+                    </div>
+                </a>
+
+                <div class="headerLinks">
+
+                    <ul>
+                        {% if app.user %}
+                            <li><a href="{# {{ path('') }} #}">Nos produits</a></li>
+                            <li><a href="{# {{ path('') }} #}">Mon panier</a></li>
+                            <li><a href="{# {{ path('') }} #}">Mon compte</a></li>
+                            <li><a href="{# {{ path('') }} #}">Déconnexion</a></li>
+                        {% else %}
+                            <li><a href="{# {{ path('login') }} #}">Connexion</a></li>
+                            <li><a href="{# {{ path('signin') }} #}">Inscription</a></li>
+                        {% endif %}
+
+
+                    </ul>
+
+                </div>
+
+            {% endblock %}
+        </header>
+
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+
+        <footer>
+            {% block footer %}
+                <div class="footerText">
+                © GreenGoodies - 2025</div>
+            {% endblock %}
+        </footer>
+
     </body>
 </html>
