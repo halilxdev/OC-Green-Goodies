@@ -45,6 +45,7 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 - [x] Créer et configurez votre base de données.
 - [x] Créer les entités à partir du modèle des données et les repositories associés.
 - [x] Créer quelques produits à l’aide de fixtures.
+- [ ] Retravailler la base de données. (Tableau relationnel inutile)
 - [ ] Rendre la création de données à partir des entités sécurisé (Symfony Asserts)
 - [ ] Commencer l’intégration des maquettes, en réalisant la structure générale (header / footer).
 

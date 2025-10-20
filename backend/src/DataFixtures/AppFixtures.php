@@ -110,7 +110,7 @@ class AppFixtures extends Fixture
         $user->setPassword($this->userPasswordHasher->hashPassword($user, "password"));
         $user->setFirstName("Halil");
         $user->setLastName("Deniz");
-        $user->setHasAPIAccess(false);
+        $user->setHasApiAccess(true);
 
         $manager->persist($user);
 

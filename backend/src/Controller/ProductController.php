@@ -22,5 +22,8 @@ final class ProductController extends AbstractController
         $productList = $productRepository->findAll();
         $jsonProductList = $serializer->serialize($productList, 'json');
         return new JsonResponse($jsonProductList, Response::HTTP_OK, [], true);
+
+        // Intégrer une vérification d'une clé API
+        // IF(USER -> ACTIVÉ L'ACCÈS API DEPUIS SON PROFIL)
     }
 }
