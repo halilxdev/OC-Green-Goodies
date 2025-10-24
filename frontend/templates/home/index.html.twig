@@ -2,8 +2,62 @@
 
 {% block title %}Accueil {% endblock %}
 
-{% block body %}
 
-endblock
+{% block body %}
+ 
+<link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css"/>
+
+<section class="hero"> {# SECTION HERO #}
+
+    <div class="heroText">
+        <div>
+            <h2>Bienvenue</h2>
+            <p>
+                Découvrez notre univers de produits durables et éthiques pour une consommation responsable
+                Retrouvez des articles d’hygiène & beauté, des accessoires & boissons et du prêt 
+                à porter
+            </p>
+        </div>
+    </div>
+
+    <div class="heroPicture">
+        <img src="{{ asset('images/238064073a3a712d46724dda6860b8292c735c02.jpg') }}" alt="">
+    </div>
+
+</section>
+
+<section class="presentation conviction"> {# SECTION CONVICTIONS #}
+
+    <div class="textPart">
+        <div>
+            <h2>NOTRE CONVICTION</h2>
+            <p>
+                Chez GreenGoodies, nous croyons en un monde où le commerce peut être synonyme de bien-être pour la planète et ses habitants. Notre mission est de vous proposer une sélection rigoureuse de produits qui allient qualité, durabilité et éthique
+            </p>
+        </div>
+    </div>
+    <div class="imagePart">
+        <img src="{{ asset('images/bdc764f53d56d2aa94c157b36fcfc7d9f2db7fa3.jpg') }}" alt="">
+    </div>
+
+</section>
+
+<section class="presentation valeurs"> {# SECTION VALEURS #}
+
+    <div class="textPart">
+        <div>
+            <h2>NOS VALEURS</h2>
+            <p>
+                Durabilité : Nous sélectionnons soigneusement des produits qui respectent l'environnement et favorisent la durabilité.
+                Éthique : Nous nous engageons à travailler avec des partenaires et des fournisseurs qui partagent nos valeurs éthiques.
+                Écologie : Nous encourageons des pratiques respectueuses de l'écosystème et privilégions les matériaux écologiques.
+            </p>
+        </div>
+    </div>
+    <div class="imagePart">
+        <img src="{{ asset('images/195e0013f44e47b56a531865bb61be5625328910.jpg') }}" alt="">
+    </div>
+
+</section>
 
 {% endblock %}

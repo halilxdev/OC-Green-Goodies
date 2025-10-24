@@ -1,0 +1,121 @@
+section.hero
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 81px - 81px);
+    min-height: 761px;
+}
+section.hero .heroPicture
+{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+}
+section.hero .heroPicture img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+section.hero .heroText
+{
+    background-color: #E8F0E3;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section.hero .heroText div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 40px;
+    width: 400px;
+    text-align: left;
+}
+section.hero .heroText h2
+{
+    font-weight: 500;
+    font-size: 64px;
+}
+section.hero .heroText p
+{
+    font-weight: 300;
+    font-size: 18px;
+}
+
+section.presentation
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 0;
+    height: 646px;
+    width: 100%;
+}
+section.presentation .imagePart
+{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+}
+section.presentation .imagePart img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+section.presentation .textPart
+{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: start;
+    padding: 50px;
+}
+section.presentation .textPart div
+{
+    width: 450px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 20px;
+}
+section.presentation .textPart div h2
+{
+    font-size: 20px;
+    font-weight: 500;
+}
+section.presentation .textPart div p
+{
+    font-size: 14px;
+    font-weight: 300;
+}
+section.presentation.conviction .textPart
+{
+    background-color: #EBE3D3;
+}
+section.presentation.valeurs
+{
+    flex-direction: row-reverse;
+}
+section.presentation.valeurs .textPart
+{
+    background-color: #E8F0E3;
+}
+section.presentation.valeurs .textPart
+{
+    background-color: #E8F0E3;
+    align-items: end;
+}
