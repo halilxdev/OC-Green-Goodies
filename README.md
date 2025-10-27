@@ -44,7 +44,7 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 
 - [x] Créer et configurez votre base de données.
 - [x] Créer les entités à partir du modèle des données et les repositories associés.  
-![Diagramme UML](https://github.com/halilxdev/OC-Green-Goodies/blob/Entities/misc/UML.png)  
+![Diagramme UML](https://github.com/halilxdev/OC-Green-Goodies/blob/main/misc/UML.png)  
 - [x] Créer quelques produits à l’aide de fixtures.
 - [x] Retravailler la base de données. (Tableau relationnel `order_item_product` inutile)
 - [ ] Créer des routes avec des verbes HTTP `GET, POST, PUT, DELETE` pour l'entité `User`
@@ -62,3 +62,5 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 * `git commit -m 'Contenu du commit'` Commit avec message
 * `git commit --allow-empty-message -m ''` Commit sans message
 * `git add -u .` Commit avec suppression des fichiers supprimés localement // Il faut être à la racine du projet
+* `git branch -d <nomDeLaBranche>` Permet de supprimer une branche en local
+* `git push -d origin <nomDeLaBranche>` Permet de supprimer une branche sur le dépot distant

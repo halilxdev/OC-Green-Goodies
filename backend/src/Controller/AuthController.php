@@ -19,12 +19,11 @@ final class AuthController extends AbstractController
      * Exemple de données :
      * {
      *      "email": "jdupont@green-goodies.fr",
-     *      "password": "password",
      *      "first_name": "Jean",
      *      "last_name": "Dupont",
+     *      "password": "password",
      *      "has_api_access": 0
      * }
-     *
      * @return JsonResponse
      */
     #[Route('/api/user', name: 'createUser', methods: ['POST'])]
