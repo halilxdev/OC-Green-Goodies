@@ -18,9 +18,11 @@ final class AuthController extends AbstractController
      * Cette méthode permet de créer un nouvel utilisateur.
      * Exemple de données :
      * {
-     *      "email": "votre@adresse.mail",
-     *      "password": "m0t_dePasse",
-     *      "zip_code": 12345
+     *      "email": "jdupont@green-goodies.fr",
+     *      "password": "password",
+     *      "first_name": "Jean",
+     *      "last_name": "Dupont",
+     *      "has_api_access": 0
      * }
      *
      * @return JsonResponse
@@ -30,14 +32,13 @@ final class AuthController extends AbstractController
     {
         $user = $serializer->deserialize($request->getContent(), type: User::class, format: 'json');
         $user->setRoles(['ROLE_USER']);
-
         $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
         $user->setPassword($hashedPassword);
 
         $em->persist($user);
         $em->flush();
-        $jsonUser = $serializer->serialize($user, 'json', ['groups' => 'getAuthors']);
 
+        $jsonUser = $serializer->serialize($user, 'json');
         return new JsonResponse($jsonUser, Response::HTTP_CREATED, [], true);
     }
 
