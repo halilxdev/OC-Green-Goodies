@@ -48,11 +48,16 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 - [x] Créer quelques produits à l’aide de fixtures.
 - [x] Retravailler la base de données. (Tableau relationnel `order_item_product` inutile)
 - [ ] Créer des routes avec des verbes HTTP `GET, POST, PUT, DELETE` pour l'entité `User`
+    - [x] `POST`/api/login_check -> Permet de récupérer le token JWT d'un compte existant
+    - [x] `POST`/api/user -> Permet de créer un profil
+    - [ ] `UPDATE`/api/user -> Permet de mettre à jour un profil
+    - [ ] `DELETE`/api/user -> Permet de supprimer un profil
 - [ ] Rendre sécurisé la création de données à partir des entités (Symfony Asserts)
 
 ### FRONT-END
 
 - [x] Commencer l’intégration des maquettes, en réalisant la structure générale (header / footer).
+- [ ] Créer les pages de connexion et d'inscription.
 - [ ] Se renseigner sur le [CSS/JS Minifier](https://github.com/sensiolabs/minify-bundle)
 
 ## Cheatsheet
