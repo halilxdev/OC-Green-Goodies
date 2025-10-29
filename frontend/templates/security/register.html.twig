@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+ 
+<link href="{{ asset('css/register.css') }}" rel="stylesheet" type="text/css"/>
+ 
+<section class="registerPage">
+    <section class="registerPageMaxWidth">
+
+        <div class="image">
+            <img src="{{asset('images/788657d2e320dfe5e12e68fa906b8b707f49e6ad.jpg')}}" alt="Image de feuilles. Illustration">
+        </div>
+
+        <div class="form">
+
+            <form method="POST" action="">
+            
+                <div class="colinput">
+                    <label for="lastName">Nom</label>
+                    <input type="text" id="lastName" name="lastName" minlength="" maxlength="" required>
+                </div>
+            
+                <div class="colinput">
+                    <label for="firstName">Prénom</label>
+                    <input type="text" id="firstName" name="firstName" minlength="" maxlength="" required>
+                </div>
+
+                <div class="colinput">
+                    <label for="email">Adresse mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            
+                <div class="colinput">
+                    <label for="password1">Mot de passe</label>
+                    <input type="text" id="password1" name="password1" required>
+                </div>
+            
+                <div class="colinput">
+                    <label for="password2">Confirmation mot de passe</label>
+                    <input type="text" id="password2" name="password2" required>
+                </div>
+            
+                <div class="rowinput">
+                    <input type="checkbox" id="cgu" name="cgu" required>
+                    <label for="cgu">J'accepte les <a href="{{path('terms')}}" class="terms">CGU</a> de GreenGoodies</label><br>
+                </div>
+
+                <input type="submit" value="S'inscrire">
+
+                <a href="{#{{path('login')}}#}" class="alreadyHaveAccount">Déjà un compte ? Se connecter</a>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

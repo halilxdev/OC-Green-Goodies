@@ -47,6 +47,8 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 ![Diagramme UML](https://github.com/halilxdev/OC-Green-Goodies/blob/main/misc/UML.png)  
 - [x] Créer quelques produits à l’aide de fixtures.
 - [x] Retravailler la base de données. (Tableau relationnel `order_item_product` inutile)
+- [x] Créer des Routes avec le verbe HTTP `GET` pour Product(s)
+    - [ ] Gérer les erreurs
 - [ ] Créer des routes avec des verbes HTTP `GET, POST, PUT, DELETE` pour l'entité `User`
     - [x] `POST`/api/login_check -> Permet de récupérer le token JWT d'un compte existant
     - [x] `POST`/api/user -> Permet de créer un profil
@@ -60,7 +62,11 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 - [x] Créer en réalisant la structure générale (header / footer).
 - [x] Créer le routeur pour la page d'accueil
 - [x] Appeler la base de données pour la page d'accueil
-- [ ] Créer les pages de connexion et d'inscription.
+- [x] Créer le template de page produit.  
+> Point à relever : 
+    > Dû à la séparation du frontend et du backend je n'ai pas utilisé la méthode qui m'a été donné en cours pour créer des formulaires de registration et login.
+- [ ] Créer le template de connexion.
+- [ ] Créer le template d'inscription.
 - [ ] Se renseigner sur le [CSS/JS Minifier](https://github.com/sensiolabs/minify-bundle)
 
 ### BONUS

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{product.name}}{% endblock %}
+
+{% block body %}
+ 
+<link href="{{ asset('css/product.css') }}" rel="stylesheet" type="text/css"/>
+ 
+<section class="productPage">
+
+    <section class="productPageMaxWidth">
+
+        <div class="coverImage">
+            <img src="{{ asset('images/' ~ product.picture) }}" alt="Image de couverture du produit suivant : {{product.name}}">
+        </div>
+
+        <div class="productInfos">
+
+            <h1>{{product.name}}</h1>
+
+            <p class="price">{{product.price}} €</p>
+
+            <br><br>
+
+            <h2>Description</h2>
+
+            <p class="fullDescription">{{product.fullDescription}}</p>
+
+            <div class="flexGrow"></div>
+
+            <a href="{#  #}">Ajouter au panier</a>
+        
+        </div>
+    
+    </section>
+
+</section>
+
+{% endblock %}

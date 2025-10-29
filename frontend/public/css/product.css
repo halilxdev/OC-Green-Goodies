@@ -1,0 +1,91 @@
+.productPage
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    background-color: #FFFDF7;
+    flex-grow: 1;
+}
+.productPageMaxWidth
+{
+    width: 100%;
+    max-width: 1440px;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.coverImage
+{
+    width: 734px;
+    height: 686px;
+    overflow: hidden;
+    display: flex;
+}
+.coverImage img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s;
+}
+.coverImage:hover img
+{
+    transform: scale(+105%);
+}
+
+.productInfos
+{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 20px;
+    padding: 50px;
+    padding-left: 100px;
+    padding-top: 100px;
+    width: 50%;
+    align-self: stretch;
+}
+
+.productInfos h1
+{
+    font-weight: 500;
+    font-size: 20px;
+}
+.productInfos p.price
+{
+    font-weight: 300;
+    font-size: 30px;
+}
+.productInfos h2
+{
+    font-weight: 400;
+    font-size: 10px;
+}
+.productInfos .fullDescription
+{
+    font-weight: 400;
+    font-size: 14px;
+}
+.productInfos a
+{
+    width: 100%;
+    height: fit-content;
+    padding: 30px;
+    background-color: #565656;
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.productInfos .flexGrow
+{
+    flex-grow: 1;
+    height: 100%;
+}

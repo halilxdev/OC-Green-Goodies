@@ -46,7 +46,7 @@
                             <li><a href="{# {{ path('') }} #}">Déconnexion</a></li>
                         {% else %}
                             <li><a href="{# {{ path('login') }} #}">Connexion</a></li>
-                            <li><a href="{# {{ path('signin') }} #}">Inscription</a></li>
+                            <li><a href="{{ path('register') }}">Inscription</a></li>
                         {% endif %}
 
                     </ul>

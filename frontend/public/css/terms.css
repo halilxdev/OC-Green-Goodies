@@ -1,0 +1,19 @@
+.terms
+{
+    width: 100%;
+    background-color: #FFFDF7;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+.termsMaxWidth
+{
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 20px;
+    padding: 20px;
+}

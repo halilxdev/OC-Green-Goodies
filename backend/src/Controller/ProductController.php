@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ProductController extends AbstractController
 {
-/**
+    /**
      * Cette méthode permet de récupérer tous les produits
      *
      */
@@ -25,5 +25,17 @@ final class ProductController extends AbstractController
 
         // Intégrer une vérification d'une clé API
         // IF(USER -> ACTIVÉ L'ACCÈS API DEPUIS SON PROFIL)
+    }
+    
+    /**
+     * Cette méthode permet de récupérer un produit
+     *
+     */
+    #[Route('/api/product/{id}', name: 'getProduct', methods: ['GET'], requirements: ['id' => '\d+'])]
+    public function getProduct(ProductRepository $productRepository, SerializerInterface $serializer, $id): JsonResponse
+    {
+        $product = $productRepository->find($id);
+        $jsonProduct = $serializer->serialize($product, 'json');
+        return new JsonResponse($jsonProduct, Response::HTTP_OK, [], true);
     }
 }

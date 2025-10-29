@@ -34,7 +34,7 @@
 
     <div class="productsMaxWidth">
         {% for product in products %}
-            <a href="{# {{ path('productDetail' ~ product.id ) }} #}">
+            <a href="{{ path('getProduct', {id: product.id}) }}">
                 <article>
 
                     <div class="coverImage">
