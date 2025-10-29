@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+ 
+<link href="{{ asset('css/login.css') }}" rel="stylesheet" type="text/css"/>
+ 
+<section class="loginPage">
+    <section class="loginPageMaxWidth">
+
+        <div class="image">
+            <img src="{{asset('images/bdc764f53d56d2aa94c157b36fcfc7d9f2db7fa3.jpg')}}" alt="Image de feuilles. Illustration">
+        </div>
+
+        <div class="form">
+
+            <div class="title">
+                <h1>Connexion</h1>
+            </div>
+
+            {% if error is not empty %}
+                <div class="error">
+                    <img src="{{asset('icons/alert-circle-sharp.svg')}}" alt="Icône d'erreur">
+                    <p>{{error}}</p>
+                </div>
+            {% endif %}
+
+            <form method="POST" action="">
+
+                <div class="colinput">
+                    <label for="email">Adresse mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            
+                <div class="colinput">
+                    <label for="password">Mot de passe</label>
+                    <input type="text" id="password" name="password" required>
+                </div>
+
+                <input type="submit" value="Se connecter">
+
+                <a href="{{path('register')}}" class="alreadyHaveAccount">Pas encore de compte ? S'inscrire</a>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

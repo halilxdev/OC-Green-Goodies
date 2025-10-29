@@ -65,8 +65,7 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 - [x] Créer le template de page produit.  
 > Point à relever : 
     > Dû à la séparation du frontend et du backend je n'ai pas utilisé la méthode qui m'a été donné en cours pour créer des formulaires de registration et login.
-- [ ] Créer le template de connexion.
-- [ ] Créer le template d'inscription.
+- [x] Créer le template de connexion et d'inscription
 - [ ] Se renseigner sur le [CSS/JS Minifier](https://github.com/sensiolabs/minify-bundle)
 
 ### BONUS

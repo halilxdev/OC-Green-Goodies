@@ -15,6 +15,18 @@
 
         <div class="form">
 
+            <div class="title">
+                <h1>Inscription</h1>
+                <p class="subtitle">Tous les champs sont obligatoires</p>
+            </div>
+
+            {% if error is not empty %}
+            <div class="error">
+                <img src="{{asset('icons/alert-circle-sharp.svg')}}" alt="Icône d'erreur">
+                <p>{{error}}</p>
+            </div>
+            {% endif %}
+
             <form method="POST" action="">
             
                 <div class="colinput">
@@ -49,7 +61,7 @@
 
                 <input type="submit" value="S'inscrire">
 
-                <a href="{#{{path('login')}}#}" class="alreadyHaveAccount">Déjà un compte ? Se connecter</a>
+                <a href="{{path('login')}}" class="alreadyHaveAccount">Déjà un compte ? Se connecter</a>
 
             </form>
 
