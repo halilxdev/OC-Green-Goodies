@@ -52,13 +52,20 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
     - [x] `POST`/api/user -> Permet de créer un profil
     - [ ] `UPDATE`/api/user -> Permet de mettre à jour un profil
     - [ ] `DELETE`/api/user -> Permet de supprimer un profil
+- [ ] EventSubscriber
 - [ ] Rendre sécurisé la création de données à partir des entités (Symfony Asserts)
 
 ### FRONT-END
 
-- [x] Commencer l’intégration des maquettes, en réalisant la structure générale (header / footer).
+- [x] Créer en réalisant la structure générale (header / footer).
+- [x] Créer le routeur pour la page d'accueil
+- [x] Appeler la base de données pour la page d'accueil
 - [ ] Créer les pages de connexion et d'inscription.
 - [ ] Se renseigner sur le [CSS/JS Minifier](https://github.com/sensiolabs/minify-bundle)
+
+### BONUS
+
+- [ ] Front-End Responsive
 
 ## Cheatsheet
 

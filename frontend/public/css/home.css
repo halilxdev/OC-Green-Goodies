@@ -119,3 +119,89 @@ section.presentation.valeurs .textPart
     background-color: #E8F0E3;
     align-items: end;
 }
+
+section.products
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFDF7;
+}
+section.products .title
+{
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 100px;
+}
+section.products .title h2
+{
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+section.products .productsMaxWidth
+{
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-wrap: wrap;
+}
+section.products article
+{
+    width: 480px;
+    height: 692px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 0;
+}
+section.products article .coverImage
+{
+    width: 100%;
+    height: 474px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section.products article .coverImage img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s;
+}
+section.products article:hover .coverImage img
+{
+    transform: scale(+105%);
+}
+section.products article .infos
+{
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+section.products article .infos h3
+{
+    font-size: 16px;
+    font-weight: 600;
+}
+section.products article .infos .desc,
+section.products article .infos .price,
+section.products article .infos .show
+{
+    font-size: 14px;
+    font-weight: 400;
+}

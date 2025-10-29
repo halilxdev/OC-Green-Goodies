@@ -26,6 +26,44 @@
 
 </section>
 
+<section class="products"> {# SECTION CONVICTIONS #}
+
+    <div class="title">
+        <h2>Nos produits</h2>
+    </div>
+
+    <div class="productsMaxWidth">
+        {% for product in products %}
+            <a href="{# {{ path('productDetail' ~ product.id ) }} #}">
+                <article>
+
+                    <div class="coverImage">
+
+                        <img src="{{ asset('images/' ~ product.picture) }}" alt="Image du projet : {{product.name}}">
+
+                    </div>
+
+                    <div class="infos">
+
+                        <h3>{{product.name}}</h3>
+
+                        <p class="desc">{{product.shortDescription}}</p>
+
+                        <p class="price">{{product.price}} €</p>
+
+                        <br>
+
+                        <p class="show">Voir le produit</p>
+
+                    </div>
+
+                </article>
+            </a>
+        {% endfor %}
+    </div>
+
+</section>
+
 <section class="presentation conviction"> {# SECTION CONVICTIONS #}
 
     <div class="textPart">
