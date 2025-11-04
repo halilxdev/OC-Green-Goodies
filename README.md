@@ -3,7 +3,7 @@
 # Green Goodies — Site e-commerce
 
 > J'ai réalisé ce projet lors de ma formation OpenClassRooms. Ce projet implique la création en Symfony d'un front-end et d'un back-end API.  
-> J'ai choisi délibérement de dissocier le front-end et le back-end pour des raisons de bonne pratique.  
+> Après avoir passé deux semaines en séparant le back et le front via deux projets Symfony, je pense que le mieux est, comme le suggère le projet, de faire une App monolithique. 
 > J'ai également pris la liberté d'utiliser Docker.
 
 ## Lancer le projet
