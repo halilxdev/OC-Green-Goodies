@@ -12,7 +12,7 @@ final class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function home(ProductRepository $productRepository): Response
     {
-        $homePageProducts = $productRepository->findTheLast10();
+        $homePageProducts = $productRepository->findTheLast9();
         return $this->render('home/index.html.twig', [
             'controller_name'   =>  'HomeController',
             'products'          =>  $homePageProducts,

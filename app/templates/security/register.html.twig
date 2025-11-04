@@ -20,53 +20,57 @@
                 <p class="subtitle">Tous les champs sont obligatoires</p>
             </div>
 
-            {% if error is not empty %}
+            {% if form_errors(registrationForm) is not empty %}
             <div class="error">
                 <img src="{{asset('icons/alert-circle-sharp.svg')}}" alt="Icône d'erreur">
-                <p>{{error}}</p>
+                <p>{{ form_errors(registrationForm) }}</p>
             </div>
             {% endif %}
 
-            <form method="POST" action="{# {{path('processRegister')}} #}">
+            {{ form_start(registrationForm) }}
             
                 <div class="colinput">
-                    <label for="lastName">Nom</label>
-                    <input type="text" id="lastName" name="lastName" minlength="" maxlength="" required>
+                    {{ form_label(registrationForm.lastname) }}
+                    {{ form_widget(registrationForm.lastname) }}
                 </div>
             
                 <div class="colinput">
-                    <label for="firstName">Prénom</label>
-                    <input type="text" id="firstName" name="firstName" minlength="" maxlength="" required>
+                    {{ form_label(registrationForm.firstname) }}
+                    {{ form_widget(registrationForm.firstname) }}
                 </div>
 
                 <div class="colinput">
-                    <label for="email">Adresse mail</label>
-                    <input type="email" id="email" name="email" required>
+                    {{ form_label(registrationForm.email) }}
+                    {{ form_widget(registrationForm.email) }}
                 </div>
-            
+
                 <div class="colinput">
-                    <label for="password1">Mot de passe</label>
-                    <input type="text" id="password1" name="password1" required>
+                    {{ form_label(registrationForm.plainPassword1) }}
+                    {{ form_widget(registrationForm.plainPassword1) }}
                 </div>
-            
+
                 <div class="colinput">
-                    <label for="password2">Confirmation mot de passe</label>
-                    <input type="text" id="password2" name="password2" required>
+                    {{ form_label(registrationForm.plainPassword2) }}
+                    {{ form_widget(registrationForm.plainPassword2) }}
                 </div>
-            
+
                 <div class="rowinput">
-                    <input type="checkbox" id="cgu" name="cgu" required>
-                    <label for="cgu">J'accepte les <a href="{{path('terms')}}" class="terms">CGU</a> de GreenGoodies</label><br>
+                    {{ form_widget(registrationForm.agreeTerms) }}
+                    <label for="{{ registrationForm.agreeTerms.vars.id }}">
+                        J'accepte les <a href="{{ path('terms') }}" class='terms'>CGU</a> de GreenGoodies
+                    </label>
                 </div>
 
-                <input type="submit" value="S'inscrire">
+                <button type="submit">S'inscrire</button>
 
                 <a href="{{path('login')}}" class="alreadyHaveAccount">Déjà un compte ? Se connecter</a>
 
-            </form>
+            {{ form_end(registrationForm) }}
 
         </div>
     </div>
 </div>
+
+
 
 {% endblock %}

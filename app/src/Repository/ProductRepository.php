@@ -17,11 +17,11 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    public function findTheLast10(): array // TROUVE LES 10 DERNIERS PRODUITS
+    public function findTheLast9(): array // TROUVE LES 10 DERNIERS PRODUITS
     {
         $qb = $this->createQueryBuilder('p')
             ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10);
+            ->setMaxResults(9);
         $query = $qb->getQuery();
         return $query->execute();
     }

@@ -16,27 +16,25 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 
 ## Liens accessibles
 
-* http://localhost:8080/    Pour le front-end
-* http://localhost:8000/    Pour le back-end (pas utile de s'y rendre car pas de HTML renvoyé)
+* http://localhost:8000/    Pour l'application
 * http://localhost:8081/    Pour PHPMyAdmin
 
 ## Liste de commandes
 
-* `docker exec -it frontend php bin/console`
-* `docker exec -it backend php bin/console`
+* `docker exec -it app php bin/console`
 
 ### Base de données
 
 #### Création de la base de données
-* `docker exec -it backend php bin/console doctrine:database:create`
+* `docker exec -it app php bin/console doctrine:database:create`
 #### Suppression de la base de données
 En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le dossier `migrations` et exécutez cette commande
-* `docker exec -it backend php bin/console doctrine:database:drop --force`
+* `docker exec -it app php bin/console doctrine:database:drop --force`
 #### Mise à jour de la base de données
-* `docker exec -it backend php bin/console make:migration`
-* `docker exec -it backend php bin/console doctrine:migrations:migrate`
+* `docker exec -it app php bin/console make:migration`
+* `docker exec -it app php bin/console doctrine:migrations:migrate`
 #### Création des fixtures pour avoir des données prédéfinies dans la base de données
-* `docker exec -it backend php bin/console doctrine:fixtures:load`
+* `docker exec -it app php bin/console doctrine:fixtures:load`
 
 ## To-do list !
 
