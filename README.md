@@ -21,20 +21,20 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 
 ## Liste de commandes
 
-* `docker exec -it app php bin/console`
+* `docker exec -it green_goodies_app php bin/console`
 
 ### Base de données
 
 #### Création de la base de données
-* `docker exec -it app php bin/console doctrine:database:create`
+* `docker exec -it green_goodies_app php bin/console doctrine:database:create`
 #### Suppression de la base de données
 En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le dossier `migrations` et exécutez cette commande
-* `docker exec -it app php bin/console doctrine:database:drop --force`
+* `docker exec -it green_goodies_app php bin/console doctrine:database:drop --force`
 #### Mise à jour de la base de données
-* `docker exec -it app php bin/console make:migration`
-* `docker exec -it app php bin/console doctrine:migrations:migrate`
+* `docker exec -it green_goodies_app php bin/console make:migration`
+* `docker exec -it green_goodies_app php bin/console doctrine:migrations:migrate`
 #### Création des fixtures pour avoir des données prédéfinies dans la base de données
-* `docker exec -it app php bin/console doctrine:fixtures:load`
+* `docker exec -it green_goodies_app php bin/console doctrine:fixtures:load`
 
 ## To-do list !
 
