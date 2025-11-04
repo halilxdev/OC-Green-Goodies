@@ -21,7 +21,7 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 
 ## Liste de commandes
 
-* `docker exec -it green_goodies_app php bin/console`
+* `docker exec -it green_goodies_app php bin/console <commande symfony>`
 
 ### Base de données
 

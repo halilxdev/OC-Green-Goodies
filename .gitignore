@@ -31,3 +31,6 @@ docker-compose.override.yml
 
 # Back-end (removed)
 backend/
+
+# JWT Token
+app/config/jwt/
