@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Définir le répertoire de travail
-WORKDIR /var/www/frontend
+WORKDIR /var/www/app
 
 # Copier les fichiers du projet
 COPY . .
@@ -21,10 +21,10 @@ COPY . .
 RUN composer install --no-interaction --optimize-autoloader
 
 # Permissions
-RUN chown -R www-data:www-data /var/www/frontend
+RUN chown -R www-data:www-data /var/www/app
 
 # Exposer le port
-EXPOSE 8080
+EXPOSE 8000
 
 # Commande de démarrage
-CMD php -S 0.0.0.0:8080 -t public
+CMD ["php", "-S", "0.0.0.0:8000", "-t", "public"]
