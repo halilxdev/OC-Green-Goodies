@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use LimitIterator;
 
 /**
  * @extends ServiceEntityRepository<Product>
@@ -16,17 +17,13 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    public function findTheLast10(): array
+    public function findTheLast10(): array // TROUVE LES 10 DERNIERS PRODUITS
     {
         $qb = $this->createQueryBuilder('p')
-            ->orderBy('p.id', 'ASC');
-
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(10);
         $query = $qb->getQuery();
-
         return $query->execute();
-
-        // to get just one result:
-        // $product = $query->setMaxResults(1)->getOneOrNullResult();
     }
 
     //    /**
