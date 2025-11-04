@@ -31,14 +31,14 @@ services:
     networks:
       - green_goodies_network
 
-  # Backend API Symfony
-  backend:
+  # Symfony App (Monolithic)
+  app:
     build:
-      context: ./backend
+      context: ./app
       dockerfile: Dockerfile
-    container_name: backend
+    container_name: green_goodies_app
     volumes:
-      - ./backend:/var/www/backend
+      - ./app:/var/www/app
     ports:
       - "8000:8000"
     depends_on:
@@ -47,23 +47,6 @@ services:
       - green_goodies_network
     environment:
       DATABASE_URL: "mysql://root:root@database:3306/green_goodies?serverVersion=8.0"
-
-  # Frontend Symfony
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: frontend
-    volumes:
-      - ./frontend:/var/www/frontend
-    ports:
-      - "8080:8080"
-    depends_on:
-      - backend
-    networks:
-      - green_goodies_network
-    environment:
-      API_URL: "http://backend:8000"
 
 volumes:
   db_data:
