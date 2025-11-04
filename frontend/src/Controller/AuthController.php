@@ -9,9 +9,8 @@ use Symfony\Component\Routing\Attribute\Route;
 final class AuthController extends AbstractController
 {
     #[Route('/register', name: 'register')]
-    public function register(): Response
+    public function register($error = null): Response
     {
-        $error = null;
         return $this->render('security/register.html.twig', [
             'controller_name'   => 'AuthController',
             'error'             =>  $error
@@ -19,9 +18,8 @@ final class AuthController extends AbstractController
     }
 
     #[Route('/login', name: 'login')]
-    public function login(): Response
+    public function login($error = null): Response
     {
-        $error = null;
         return $this->render('security/login.html.twig', [
             'controller_name'   =>  'AuthController',
             'error'             =>  $error

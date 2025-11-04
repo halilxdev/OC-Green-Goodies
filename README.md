@@ -63,7 +63,7 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 - [x] Créer le routeur pour la page d'accueil
 - [x] Appeler la base de données pour la page d'accueil
 - [x] Créer le template de page produit.  
-> Point à relever : 
+> Point à relever :  
     > Dû à la séparation du frontend et du backend je n'ai pas utilisé la méthode qui m'a été donné en cours pour créer des formulaires de registration et login.
 - [x] Créer le template de connexion et d'inscription
 - [ ] Se renseigner sur le [CSS/JS Minifier](https://github.com/sensiolabs/minify-bundle)
@@ -81,3 +81,18 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 * `git add -u .` Commit avec suppression des fichiers supprimés localement // Il faut être à la racine du projet
 * `git branch -d <nomDeLaBranche>` Permet de supprimer une branche en local
 * `git push -d origin <nomDeLaBranche>` Permet de supprimer une branche sur le dépot distant
+
+
+<!--
+
+À VOIR AVEC CYRIL
+
+-> Je crois en avoir trop fait en séparant le back-end et le front-end. Le "back-end" doit juste servir au client pour une API je crois.
+
+-> Dans la grille d'auto-évalutation :
+    [ ] Les formulaires sont affichés à l’aide des fonctions form* de Twig
+    [ ] Les formulaires sont gérés avec les Forms (et vérifiés avec les Validators de Symfony)
+    >> Sauf que je n'ai pas fait ça étant donné que j'ai séparé le backend et le frontend (make:registration est fait pour les app monolitiques)
+    >> utilisation de DTO (Data Transfert Object) dans le FRONT pour représenter l'entité User dans le BACK ?
+    
+-->
