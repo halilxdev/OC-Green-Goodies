@@ -42,10 +42,9 @@ final class AuthController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
-        $lastUsername = $authenticationUtils->getLastUsername();
-        
+        $lastEmail = $authenticationUtils->getLastUsername();
         return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername,
+            'last_email' => $lastEmail,
             'error' => $error,
         ]);
     }

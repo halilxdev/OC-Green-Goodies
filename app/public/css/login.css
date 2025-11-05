@@ -161,3 +161,7 @@ button[type=submit]
     width: 16px;
     height: 16px;
 }
+.disconnect
+{
+    font-weight: 600;
+}

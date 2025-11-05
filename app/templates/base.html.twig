@@ -43,7 +43,7 @@
                             <li><a href="{# {{ path('') }} #}">Nos produits</a></li>
                             <li><a href="{# {{ path('') }} #}">Mon panier</a></li>
                             <li><a href="{# {{ path('') }} #}">Mon compte</a></li>
-                            <li><a href="{# {{ path('') }} #}">Déconnexion</a></li>
+                            <li><a href="{{ path('logout') }}">Déconnexion</a></li>
                         {% else %}
                             <li><a href="{{ path('login') }}">Connexion</a></li>
                             <li><a href="{{ path('register') }}">Inscription</a></li>
