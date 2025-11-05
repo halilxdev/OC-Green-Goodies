@@ -61,6 +61,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->orders = new ArrayCollection();
         $this->invoices = new ArrayCollection();
+        $this->setRoles(['ROLE_USER']);
+        $this->setHasApiAccess(false);
     }
 
     public function getId(): ?int
