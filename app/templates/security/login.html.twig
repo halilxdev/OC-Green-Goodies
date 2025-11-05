@@ -32,11 +32,11 @@
                 </div>
             {% endif %}
 
-            <form method="POST" action="{# {{path('processLogin')}} #}">
+            <form method="POST">
 
                 <div class="colinput">
                     <label for="email">Adresse mail</label>
-                    <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
+                    <input type="email" value="{{ last_username }}" name="_email" id="email" class="form-control" autocomplete="email" required autofocus>
                 </div>
             
                 <div class="colinput">
