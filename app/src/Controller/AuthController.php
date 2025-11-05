@@ -14,23 +14,6 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 final class AuthController extends AbstractController
 {
-    // #[Route('/register', name: 'register')]
-    // public function register($error = null): Response
-    // {
-    //     return $this->render('security/register.html.twig', [
-    //         'controller_name'   => 'AuthController',
-    //         'error'             =>  $error
-    //     ]);
-    // }
-
-    // #[Route('/login', name: 'login')]
-    // public function login($error = null): Response
-    // {
-    //     return $this->render('security/login.html.twig', [
-    //         'controller_name'   =>  'AuthController',
-    //         'error'             =>  $error
-    //     ]);
-    // }
 
     #[Route('/register', name: 'register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response

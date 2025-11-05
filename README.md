@@ -76,6 +76,7 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 
 * `git commit -m 'Contenu du commit'` Commit avec message
 * `git commit --allow-empty-message -m ''` Commit sans message
+* `git rm --cached -r <file>` Supprimer un fichier ou un dossier dans le dépôt distant (il faut le commit)
 * `git add -u .` Commit avec suppression des fichiers supprimés localement // Il faut être à la racine du projet
 * `git branch -d <nomDeLaBranche>` Permet de supprimer une branche en local
 * `git push -d origin <nomDeLaBranche>` Permet de supprimer une branche sur le dépot distant
