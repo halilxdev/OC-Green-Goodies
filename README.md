@@ -42,7 +42,7 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 
 - [x] Créer et configurez votre base de données.
 - [x] Créer les entités à partir du modèle des données et les repositories associés.  
-![Diagramme UML](https://github.com/halilxdev/OC-Green-Goodies/blob/main/misc/UML.png)  
+![Diagramme UML](https://github.com/halilxdev/OC-Green-Goodies/tree/main/misc/UML.png)  
 - [x] Créer quelques produits à l’aide de fixtures.
 - [x] Retravailler la base de données. (Tableau relationnel `order_item_product` inutile)
 - [x] Créer des Routes avec le verbe HTTP `GET` pour Product(s)
