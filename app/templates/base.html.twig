@@ -40,7 +40,7 @@
 
                     <ul>
                         {% if app.user %}
-                            <li><a href="{# {{ path('') }} #}">Nos produits</a></li>
+                            <li><a href="{{ path('getProducts') }}">Nos produits</a></li>
                             <li><a href="{# {{ path('') }} #}">Mon panier</a></li>
                             <li><a href="{# {{ path('') }} #}">Mon compte</a></li>
                             <li><a href="{{ path('logout') }}">Déconnexion</a></li>

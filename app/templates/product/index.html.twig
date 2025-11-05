@@ -1,38 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{product.name}}{% endblock %}
+{% block title %}Liste de produits{% endblock %}
+
 
 {% block body %}
- 
-<link href="{{ asset('css/product.css') }}" rel="stylesheet" type="text/css"/>
- 
-<section class="productPage">
 
-    <section class="productPageMaxWidth">
+<link href="{{ asset('css/products.css') }}" rel="stylesheet" type="text/css"/>
 
-        <div class="coverImage">
-            <img src="{{ asset('images/' ~ product.picture) }}" alt="Image de couverture du produit suivant : {{product.name}}">
-        </div>
+<section class="products"> {# SECTION CONVICTIONS #}
 
-        <div class="productInfos">
+    <div class="title">
+        <h2>Nos produits</h2>
+    </div>
 
-            <h1>{{product.name}}</h1>
+    <div class="productsMaxWidth">
+        {% for product in products %}
+            <a href="{{ path('getProduct', {id: product.id}) }}">
+                <article>
 
-            <p class="price">{{product.price}} €</p>
+                    <div class="coverImage">
 
-            <br><br>
+                        <img src="{{ asset('images/' ~ product.picture) }}" alt="Image du projet : {{product.name}}">
 
-            <h2>Description</h2>
+                    </div>
 
-            <p class="fullDescription">{{product.fullDescription}}</p>
+                    <div class="infos">
 
-            <div class="flexGrow"></div>
+                        <h3>{{product.name}}</h3>
 
-            <a href="{#  #}">Ajouter au panier</a>
-        
-        </div>
-    
-    </section>
+                        <p class="desc">{{product.shortDescription}}</p>
+
+                        <p class="price">{{product.price}} €</p>
+
+                        <br>
+
+                        <p class="show">Voir le produit</p>
+
+                    </div>
+
+                </article>
+            </a>
+        {% endfor %}
+    </div>
 
 </section>
 
