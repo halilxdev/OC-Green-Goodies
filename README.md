@@ -38,32 +38,28 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 
 ## To-do list !
 
-### BACK-END
+### ÉTAPE 2
 
 - [x] Créer et configurez votre base de données.
 - [x] Créer les entités à partir du modèle des données et les repositories associés.  
 ![Diagramme UML](https://github.com/halilxdev/OC-Green-Goodies/blob/main/misc/UML.png)  
-- [x] Créer quelques produits à l’aide de fixtures.
-- [x] Retravailler la base de données. (Tableau relationnel `order_item_product` inutile)
-- [x] Créer des Routes avec le verbe HTTP `GET` pour Product(s)
-    - [ ] Gérer les erreurs
-- [ ] Créer des routes avec des verbes HTTP `GET, POST, PUT, DELETE` pour l'entité `User`
-    - [x] `POST`/api/login_check -> Permet de récupérer le token JWT d'un compte existant
-    - [x] `POST`/api/user -> Permet de créer un profil
-    - [ ] `UPDATE`/api/user -> Permet de mettre à jour un profil
-    - [ ] `DELETE`/api/user -> Permet de supprimer un profil
+- [x] Créer 9 produits à l’aide de fixtures.
+- [x] Créer en réalisant la structure générale (header / footer) dynamique selon l'état de l'utilisateur (connecté ou non).
+
+### ÉTAPE 3
+
+- [ ] Système de connexion
+    - [x] Création des templates et des forms
+    - [x] Système simple fonctionnel
+    - [ ] Système sécurisé (Asserts sur les Entity, Vérification dans le Controller)
+- [x] Gérer la récup. DQL et l'affichage des produits et de la liste de produits.
+- [ ] Mise en place du système de commandes.
+- [ ] Création de la page Mon Compte
+
+### ÉTAPE 4
+
+- [ ] Développer un Controller API
 - [ ] EventSubscriber
-- [ ] Rendre sécurisé la création de données à partir des entités (Symfony Asserts)
-
-### FRONT-END
-
-- [x] Créer en réalisant la structure générale (header / footer).
-- [x] Créer le routeur pour la page d'accueil
-- [x] Appeler la base de données pour la page d'accueil
-- [x] Créer le template de page produit.  
-> Point à relever :  
-    > Dû à la séparation du frontend et du backend je n'ai pas utilisé la méthode qui m'a été donné en cours pour créer des formulaires de registration et login.
-- [x] Créer le template de connexion et d'inscription
 - [ ] Se renseigner sur le [CSS/JS Minifier](https://github.com/sensiolabs/minify-bundle)
 
 ### BONUS
