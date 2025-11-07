@@ -46,20 +46,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?bool $hasApiAccess = null;
 
     /**
-     * @var Collection<int, Order>
-     */
-    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'user', orphanRemoval: true)]
-    private Collection $orders;
-
-    /**
      * @var Collection<int, Invoice>
      */
     #[ORM\OneToMany(targetEntity: Invoice::class, mappedBy: 'user', orphanRemoval: true)]
     private Collection $invoices;
 
+    #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Order $orderclass = null;
+
     public function __construct()
     {
-        $this->orders = new ArrayCollection();
         $this->invoices = new ArrayCollection();
         $this->setRoles(['ROLE_USER']);
         $this->setHasApiAccess(false);
@@ -189,36 +185,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Order>
-     */
-    public function getOrders(): Collection
-    {
-        return $this->orders;
-    }
-
-    public function addOrder(Order $order): static
-    {
-        if (!$this->orders->contains($order)) {
-            $this->orders->add($order);
-            $order->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOrder(Order $order): static
-    {
-        if ($this->orders->removeElement($order)) {
-            // set the owning side to null (unless already changed)
-            if ($order->getUser() === $this) {
-                $order->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Invoice>
      */
     public function getInvoices(): Collection
@@ -226,24 +192,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->invoices;
     }
 
-    public function addInvoice(Invoice $invoice): static
+    public function getOrderclass(): ?Order
     {
-        if (!$this->invoices->contains($invoice)) {
-            $this->invoices->add($invoice);
-            $invoice->setUser($this);
-        }
-
-        return $this;
+        return $this->orderclass;
     }
 
-    public function removeInvoice(Invoice $invoice): static
+    public function setOrderclass(?Order $orderclass): static
     {
-        if ($this->invoices->removeElement($invoice)) {
-            // set the owning side to null (unless already changed)
-            if ($invoice->getUser() === $this) {
-                $invoice->setUser(null);
-            }
-        }
+        $this->orderclass = $orderclass;
 
         return $this;
     }

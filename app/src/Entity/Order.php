@@ -17,10 +17,6 @@ class Order
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'orders')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
-
     #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
     private ?string $totalPriceNoVAT = null;
 
@@ -30,6 +26,9 @@ class Order
     #[ORM\OneToMany(targetEntity: Item::class, mappedBy: 'orderClass', orphanRemoval: true)]
     private Collection $items;
 
+    #[ORM\OneToOne(mappedBy: 'orderclass', cascade: ['persist', 'remove'])]
+    private ?User $user = null;
+
     public function __construct()
     {
         $this->items = new ArrayCollection();
@@ -38,18 +37,6 @@ class Order
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): static
-    {
-        $this->user = $user;
-
-        return $this;
     }
 
     public function getTotalPriceNoVAT(): ?string
@@ -90,6 +77,28 @@ class Order
                 $item->setOrderClass(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($user === null && $this->user !== null) {
+            $this->user->setOrderclass(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($user !== null && $user->getOrderclass() !== $this) {
+            $user->setOrderclass($this);
+        }
+
+        $this->user = $user;
 
         return $this;
     }

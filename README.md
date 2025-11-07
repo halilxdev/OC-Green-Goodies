@@ -2,7 +2,7 @@
 
 # Green Goodies — Site e-commerce
 
-> J'ai réalisé ce projet lors de ma formation OpenClassRooms. Ce projet implique la création en Symfony d'un front-end et d'un back-end API.  
+> J'ai réalisé ce projet lors de ma formation OpenClassRooms. Ce projet implique la création d'un projet en Symfony.
 > Après avoir passé deux semaines en séparant le back et le front via deux projets Symfony, je pense que le mieux est, comme le suggère le projet, de faire une App monolithique. 
 > J'ai également pris la liberté d'utiliser Docker.
 
@@ -25,11 +25,13 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 
 ### Base de données
 
-#### Création de la base de données
-* `docker exec -it green_goodies_app php bin/console doctrine:database:create`
 #### Suppression de la base de données
 En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le dossier `migrations` et exécutez cette commande
 * `docker exec -it green_goodies_app php bin/console doctrine:database:drop --force`
+
+
+#### Création de la base de données
+* `docker exec -it green_goodies_app php bin/console doctrine:database:create`
 #### Mise à jour de la base de données
 * `docker exec -it green_goodies_app php bin/console make:migration`
 * `docker exec -it green_goodies_app php bin/console doctrine:migrations:migrate`
