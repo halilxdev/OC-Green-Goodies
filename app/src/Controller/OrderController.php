@@ -31,9 +31,11 @@ final class OrderController extends AbstractController
         $items = [];
         $totalPrice = 0;
 
-        if($user && !empty($user->getOrderclass()))
+        $orderClass = $this->orderRepository->findOneBy( ['UserClass' => $user->getId()] );
+
+        if($user && ($orderClass != null))
         {
-            $order = $user->getOrderClass()->getItems();
+            $order = $orderClass->getItems();
             foreach($order as $item)
             {
                 $items[] = [
@@ -44,7 +46,7 @@ final class OrderController extends AbstractController
                     'picture'   =>  $item->getProduct()->getPicture(),
                 ];
             }
-            $totalPrice = $user->getOrderclass()->getTotalPriceNoVAT();
+            $totalPrice = $orderClass->getTotalPriceNoVAT();
         }
 
         return $this->render('order/index.html.twig', [
@@ -62,13 +64,13 @@ final class OrderController extends AbstractController
         EntityManagerInterface $entityManager,
     ): Response
     {
-        $order = $user->getOrderclass();
+        $order = $this->orderRepository->findOneBy( ['UserClass' => $user->getId()] );
         if ($order) {
             // Supprimer tous les items d'abord
             foreach ($order->getItems() as $item) {
                 $entityManager->remove($item);
             }
-            $user->removeOrderclass();
+            $user->removeOrderclass($order);
             $entityManager->remove($order);
             $entityManager->persist($user);
         }
@@ -86,43 +88,6 @@ final class OrderController extends AbstractController
         OrderRepository $orderRepository,
     ): Response
     {
-
-        // // Vérification d'un item existant
-        // $existingItem = null;
-        // foreach ($order->getItems() as $item) {
-        //     if ($item->getProduct()->getId() === $product->getId()) {
-        //         $existingItem = $item;
-        //         break;
-        //     }
-        // }
-
-        // if ($existingItem) {
-        //     // Augmenter la quantité
-        //     $existingItem->setQuantity($existingItem->getQuantity() + 1);
-        //     $entityManager->persist($existingItem);
-        // } else {
-        //     // Créer un nouvel item
-        //     $item = new Item();
-        //     $item->setOrderClass($order);
-        //     $item->setProduct($product);
-        //     $item->setQuantity(1);
-        //     $entityManager->persist($item);
-        // }
-
-        // $entityManager->flush(); // Flush pour créer les items en base
-        // $entityManager->refresh($order); // Refresh pour recharger la collection d'items
-
-        // Recalcul automatique du prix total
-        // $price = 0;
-        // foreach($order->getItems() as $i)
-        // {
-        //     $price += $i->getProduct()->getPrice() * $i->getQuantity();
-        // }
-        // $order->setTotalPriceNoVAT($price);
-        // $entityManager->persist($order);
-
-
-
         // Récupération du produit
         $product = $productReposity->find($id);
 
