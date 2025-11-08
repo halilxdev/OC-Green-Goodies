@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Order;
 use App\Entity\Item;
+use App\Repository\OrderRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,6 +16,12 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class OrderController extends AbstractController
 {
+
+    public function __construct(
+        private OrderRepository $orderRepository,
+    )
+    {}
+
     #[Route('/cart', name: 'getCart')]
     #[IsGranted('ROLE_USER')]
     public function getCart(
@@ -76,21 +83,58 @@ final class OrderController extends AbstractController
         int $id,
         ProductRepository $productReposity,
         EntityManagerInterface $entityManager,
+        OrderRepository $orderRepository,
     ): Response
     {
+
+        // // Vérification d'un item existant
+        // $existingItem = null;
+        // foreach ($order->getItems() as $item) {
+        //     if ($item->getProduct()->getId() === $product->getId()) {
+        //         $existingItem = $item;
+        //         break;
+        //     }
+        // }
+
+        // if ($existingItem) {
+        //     // Augmenter la quantité
+        //     $existingItem->setQuantity($existingItem->getQuantity() + 1);
+        //     $entityManager->persist($existingItem);
+        // } else {
+        //     // Créer un nouvel item
+        //     $item = new Item();
+        //     $item->setOrderClass($order);
+        //     $item->setProduct($product);
+        //     $item->setQuantity(1);
+        //     $entityManager->persist($item);
+        // }
+
+        // $entityManager->flush(); // Flush pour créer les items en base
+        // $entityManager->refresh($order); // Refresh pour recharger la collection d'items
+
+        // Recalcul automatique du prix total
+        // $price = 0;
+        // foreach($order->getItems() as $i)
+        // {
+        //     $price += $i->getProduct()->getPrice() * $i->getQuantity();
+        // }
+        // $order->setTotalPriceNoVAT($price);
+        // $entityManager->persist($order);
+
+
+
         // Récupération du produit
         $product = $productReposity->find($id);
 
-        // Vérification d'une commande existante
-        if(empty($user->getOrderclass()))
+        // Récupération d'une commande ou création d'une nouvelle
+        $order = $orderRepository->findOneBy(['UserClass' => $user->getId()]);
+        if( !isset($order) )
         {
             $order = new Order();
-            $order->setUser($user);
+            $order->setUserClass($user);
             $order->setTotalPriceNoVAT(0);
             $entityManager->persist($order);
-            $entityManager->flush(); // Flush pour créer l'order en base
-        }else{
-            $order = $user->getOrderclass();
+            $entityManager->flush();
         }
 
         // Vérification d'un item existant
@@ -127,7 +171,7 @@ final class OrderController extends AbstractController
         $order->setTotalPriceNoVAT($price);
         $entityManager->persist($order);
 
-        $entityManager->flush();
+        $entityManager->flush(); // Flush final
 
         // Redirection vers la page initiale
         return $this->redirectToRoute('getProduct', [

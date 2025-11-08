@@ -5,6 +5,7 @@ namespace App\Twig;
     use App\Entity\User;
     use App\Entity\Order;
     use App\Repository\OrderRepository;
+    use Symfony\Component\Security\Http\Attribute\CurrentUser;
     use Twig\Extension\AbstractExtension;
     use Twig\Extension\GlobalsInterface;
     use Symfony\Bundle\SecurityBundle\Security;
@@ -13,7 +14,7 @@ class CartExtension extends AbstractExtension implements GlobalsInterface
 {
     public function __construct(
         private Security $security,
-        public OrderRepository $orderRepository,
+        private OrderRepository $orderRepository,
     ) {
     }
 
@@ -21,34 +22,27 @@ class CartExtension extends AbstractExtension implements GlobalsInterface
     {
         $user = $this->security->getUser();
         $productInCart = 0;
-        if($user instanceof User)
+        if(!empty($user))
         {
-            $productInCart = $this->calculateProductsInCart($user);
+            $productInCart = $this->calculateProductsInCart();
         }
         return [
             'productInCart' => $productInCart,
         ];
     }
 
-    private function calculateProductsInCart(
-        $user
-    ): int
+    private function calculateProductsInCart(): int
     {
-        $order = $user->getOrderClass();
-
+        $user = $this->security->getUser();
         $totalProducts = 0;
-
-        $order = $this->orderRepository->findOneBy(['id' => $user->getId()]);
-        if ($order === null) {
-            return 0;
+        $order = $this->orderRepository->findOneBy( ['UserClass' => $user] );
+        if($order)
+        {
+            $items = $order->getItems();
+            foreach ($items as $item) {
+                $totalProducts += $item->getQuantity();
+            }
         }
-        $items = $order->getItems();
-
-
-        foreach ($items as $item) {
-            $totalProducts += $item->getQuantity();
-        }
-
         return $totalProducts;
     }
 }
