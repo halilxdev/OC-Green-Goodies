@@ -60,9 +60,9 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
     - [x] Extension Twig pour afficher le nombre de produits dans le panier
     - [x] Route pour afficher le panier
     - [x] Route pour vider le panier
-    - [ ] Transformation d'un panier en commande/facture
-    - [ ] IMPORTANT -> Order -> Faire une vérif si facture existante pour créer un nouvel order per user
-- [ ] Création de la page Mon Compte
+    - [x] Transformation d'un panier en commande/facture
+    - [x] IMPORTANT -> Order -> Faire une vérif si facture existante pour créer un nouvel order per user
+- [x] Création de la page Mon Compte
 
 ### ÉTAPE 4
 

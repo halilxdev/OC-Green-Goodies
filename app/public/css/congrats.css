@@ -16,10 +16,17 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: start;
+    align-items: center;
     padding-top: 50px;
     padding-bottom: 100px;
     gap: 20px;
+}
+.title
+{
+    gap: 10px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 h1
 {
@@ -32,4 +39,21 @@ h2
 {
     font-weight: 500;
     font-size: 14px;
+}
+.action
+{
+    width: 300px;
+    height: fit-content;
+    padding: 30px;
+    background-color: #565656;
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.check
+{
+    width: 26px;
 }

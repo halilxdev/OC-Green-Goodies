@@ -40,25 +40,26 @@ final class ProfileController extends AbstractController
     public function deleteProfile(
         #[CurrentUser()] ?User $user,
         EntityManagerInterface $entityManager,
+        OrderRepository $orderRepository,
         Security $security,
     ): Response
     {
-        $order = $user->getOrderclass();
-        if ($order) {
+        $orders = $orderRepository->findBy( ['UserClass'    =>  $user] );
+        if ($orders) {
             // Supprimer les factures liées à cet order
             $invoiceRepository = $entityManager->getRepository(Invoice::class);
-            $invoices = $invoiceRepository->createQueryBuilder('i')
-                ->where('i.orderClass = :order')
-                ->setParameter('order', $order)
-                ->getQuery()
-                ->getResult();
+            $invoices = $invoiceRepository->findBy(['orderClass' => $orders]);
+            // Supprimer tous les items 
+            foreach ($orders as $order) {
+                foreach($order->getItems() as $o)
+                {
+                    $entityManager->remove($o);
+                }
+            }
             foreach ($invoices as $invoice) {
                 $entityManager->remove($invoice);
             }
-            // Supprimer tous les items
-            foreach ($order->getItems() as $item) {
-                $entityManager->remove($item);
-            }
+
             $entityManager->remove($order);
         }
         $entityManager->remove($user);
