@@ -90,25 +90,24 @@ final class OrderController extends AbstractController
             $order->setUser($user);
             $order->setTotalPriceNoVAT(0);
             $entityManager->persist($order);
+            $entityManager->flush(); // Flush pour créer l'order en base
         }else{
             $order = $user->getOrderclass();
-            $entityManager->persist($order);
         }
 
         // Vérification d'un item existant
         $existingItem = null;
-        if ($user->getOrderclass()) {
-            foreach ($user->getOrderclass()->getItems() as $item) {
-                if ($item->getProduct()->getId() === $product->getId()) {
-                    $existingItem = $item;
-                    break;
-                }
+        foreach ($order->getItems() as $item) {
+            if ($item->getProduct()->getId() === $product->getId()) {
+                $existingItem = $item;
+                break;
             }
         }
 
         if ($existingItem) {
-        // Augmenter la quantité
-        $existingItem->setQuantity($existingItem->getQuantity() + 1);
+            // Augmenter la quantité
+            $existingItem->setQuantity($existingItem->getQuantity() + 1);
+            $entityManager->persist($existingItem);
         } else {
             // Créer un nouvel item
             $item = new Item();
@@ -118,7 +117,10 @@ final class OrderController extends AbstractController
             $entityManager->persist($item);
         }
 
-        // Recalcul automatique du prix total sans TVA
+        $entityManager->flush(); // Flush pour créer les items en base
+        $entityManager->refresh($order); // Refresh pour recharger la collection d'items
+
+        // Recalcul automatique du prix total
         $price = 0;
         foreach($order->getItems() as $i)
         {
@@ -132,7 +134,6 @@ final class OrderController extends AbstractController
         // Redirection vers la page initiale
         return $this->redirectToRoute('getProduct', [
             'id'                =>  $id,
-            'productInCart'     =>  4,
         ]);
 
     }
