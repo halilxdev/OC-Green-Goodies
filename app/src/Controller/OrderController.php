@@ -19,8 +19,6 @@ final class OrderController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function getCart(
         #[CurrentUser] ?User $user,
-        ProductRepository $productRepository,
-        EntityManagerInterface $entityManager,
     ): Response
     {
         $items = [];
