@@ -51,4 +51,19 @@ header
 .headerLinks ul li a
 {
     font-weight: 400;
+    position: relative;
+}
+.productInCart{
+    position: absolute;
+    right: -16px;
+    top: -8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 500px;
+    background-color: var(--green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 10px;
 }

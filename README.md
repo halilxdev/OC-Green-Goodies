@@ -56,6 +56,9 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
     - [ ] Système sécurisé (Asserts sur les Entity, Vérification dans le Controller)
 - [x] Gérer la récup. DQL et l'affichage des produits et de la liste de produits.
 - [ ] Mise en place du système de commandes.
+    - [x] Route pour ajouter un produit au panier
+    - [x] Extension Twig pour afficher le nombre de produits dans le panier
+    - [ ] Route pour afficher le panier
 - [ ] Création de la page Mon Compte
 
 ### ÉTAPE 4

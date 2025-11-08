@@ -8,19 +8,30 @@ use App\Entity\Item;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
 final class OrderController extends AbstractController
 {
+    #[Route('/cart', name: 'getCart')]
+    public function getCart(
+        #[CurrentUser] ?User $user,
+        ProductRepository $productRepository,
+        EntityManagerInterface $entityManager,
+    ): Response
+    {
+        return $this->render('order/index.html.twig', [
+            'controller_name'   =>  'HomeController',
+        ]);
+
+    }
+
     #[Route('/cart/add/{id}', name: 'addToCart')]
     public function addToCart(
         #[CurrentUser] ?User $user,
         int $id,
         ProductRepository $productReposity,
-        Request $request,
         EntityManagerInterface $entityManager,
     ): Response
     {
@@ -80,30 +91,10 @@ final class OrderController extends AbstractController
         $entityManager->flush();
 
         // Redirection vers la page initiale
-        return $this->redirectToRoute('getProduct', ['id' => $id]);
-
-        
-
-
-        // ÉTAPE 1
-            // Vérifier si utilisateur est connecté     ->  OK
-
-        // ÉTAPE 2
-            // RÉCUPÉRER LA PAGE                -> OK
-            // RÉCUPÉRER L'UTILISATEUR          -> 
-            // RÉCUPÉRER LE PRODUIT             -> 
-
-        // ÉTAPE 3
-            // DQL —> AJOUTER EN BASE DE DONNÉES CES DONNÉES
-            /* 
-            ** ORDER -> user_id
-            ** ORDER -> 
-            */
-
-
-        // $this->denyAccessUnlessGranted('ROLE_USER');
-
-        // echo 'h';die();
+        return $this->redirectToRoute('getProduct', [
+            'id'                =>  $id,
+            'productInCart'     =>  4,
+        ]);
 
     }
 }
