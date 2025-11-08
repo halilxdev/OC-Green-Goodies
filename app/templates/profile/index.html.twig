@@ -14,6 +14,28 @@
 
         <section class="profileItem">
             <h2>Mes commandes</h2>
+            {% if invoices is not empty %}
+            <table border=1 frame=void rules=rows>
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Date</th>
+                        <th>Prix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for invoice in invoices %}
+                    <tr>
+                        <td>{{invoice.id}}</td>
+                        <td>{{invoice.date|date("m/d/Y")}}</td>
+                        <td>{{invoice.total|number_format(2, ',', '.')}} €</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>Aucune commande pour l'instant...</p>
+            {% endif %}
         </section>
 
         <section class="profileItem">

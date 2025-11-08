@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Invoice;
+use App\Entity\Order;
 use App\Entity\User;
 use App\Enum\InvoiceStatus;
 use App\Form\InvoiceFormType;
 use App\Repository\InvoiceRepository;
+use App\Repository\OrderRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,15 +25,15 @@ final class InvoiceController extends AbstractController
         #[CurrentUser()] ?User $user,
         EntityManagerInterface $entityManager,
         Request $request,
+        OrderRepository $orderRepository,
     ): Response
     {
-
         // Récupération de l'User
         $form = $this->createForm(InvoiceFormType::class, $user);
         $form->handleRequest($request);
 
         // Récupération des infos du panier
-        $order = $user->getOrderclass();
+        $order = $orderRepository->findOneBy(['UserClass'   =>  $user], ['id' => 'DESC']);
 
         // Récupération du prix HT + TVA + TTC
         $totalAmount = $order->getTotalPriceNoVAT();
@@ -52,7 +54,7 @@ final class InvoiceController extends AbstractController
             $userCity = $form->get('city')->getData();
 
             $invoice = new Invoice();
-            $invoice->setOrderClass($user->getOrderclass());
+            $invoice->setOrderClass($order);
 
             $invoice->setAddress($userAddress);
             $invoice->setZipCode($userZipCode);
@@ -68,14 +70,32 @@ final class InvoiceController extends AbstractController
             $entityManager->persist($order);
             $entityManager->flush();
 
-            return $this->redirectToRoute('createInvoice', [
-                'id'    =>  $invoice->getId(),
-            ]);
+            $newOrder = new Order();
+            $newOrder->setUserClass($user);
+            $newOrder->setTotalPriceNoVAT(0);
+
+            $entityManager->persist($user);
+            $entityManager->persist($newOrder);
+
+            $entityManager->refresh($user);
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute('congratsInvoice');
         }
 
         return $this->render('invoice/informations.html.twig', [
             'InvoiceForm'       =>  $form,
             'order'             =>  $orderInfos,
+        ]);
+    }
+
+    #[Route('/invoice/congrats', name: 'congratsInvoice')]
+    #[IsGranted('ROLE_USER')]
+    public function congratsInvoice(): Response
+    {
+        return $this->render('invoice/congrats.html.twig', [
+            'controller_name'   =>  'InvoiceController',
         ]);
     }
 

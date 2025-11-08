@@ -31,7 +31,7 @@ final class OrderController extends AbstractController
         $items = [];
         $totalPrice = 0;
 
-        $orderClass = $this->orderRepository->findOneBy( ['UserClass' => $user->getId()] );
+        $orderClass = $this->orderRepository->findOneBy( ['UserClass' => $user->getId()], ['id' => 'DESC'] );
 
         if($user && ($orderClass != null))
         {
@@ -64,7 +64,7 @@ final class OrderController extends AbstractController
         EntityManagerInterface $entityManager,
     ): Response
     {
-        $order = $this->orderRepository->findOneBy( ['UserClass' => $user->getId()] );
+        $order = $this->orderRepository->findOneBy( ['UserClass' => $user->getId()], ['id' => 'DESC'] );
         if ($order) {
             // Supprimer tous les items d'abord
             foreach ($order->getItems() as $item) {
@@ -92,7 +92,7 @@ final class OrderController extends AbstractController
         $product = $productReposity->find($id);
 
         // Récupération d'une commande ou création d'une nouvelle
-        $order = $orderRepository->findOneBy(['UserClass' => $user->getId()]);
+        $order = $orderRepository->findOneBy(['UserClass' => $user->getId()], ['id' => 'DESC']);
         if( !isset($order) )
         {
             $order = new Order();

@@ -35,7 +35,7 @@ class CartExtension extends AbstractExtension implements GlobalsInterface
     {
         $user = $this->security->getUser();
         $totalProducts = 0;
-        $order = $this->orderRepository->findOneBy( ['UserClass' => $user] );
+        $order = $this->orderRepository->findOneBy( ['UserClass' => $user], ['id' => 'DESC'] );
         if($order)
         {
             $items = $order->getItems();

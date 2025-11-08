@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Invoice;
 use App\Entity\User;
+use App\Repository\InvoiceRepository;
+use App\Repository\OrderRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -18,12 +20,18 @@ final class ProfileController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function getProfile(
         #[CurrentUser()] ?User $user,
+        OrderRepository $orderRepository,
+        InvoiceRepository $invoiceRepository,
     ): Response
     {
         $apiAccess = $user->hasApiAccess();
+        $orders = $orderRepository->findBy(['UserClass' => $user], ['id' => 'DESC']);
+        $invoices = $invoiceRepository->findBy(['orderClass' => $orders], ['id' => 'DESC']);
+
         return $this->render('profile/index.html.twig', [
             'controller_name'   =>  'ProfileController',
             'apiAccess'         =>  $apiAccess,
+            'invoices'          =>  $invoices,
         ]);
     }
 

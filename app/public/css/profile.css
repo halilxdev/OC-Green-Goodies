@@ -61,3 +61,23 @@ h2
     border: none;
     margin: 0 auto;
 }
+
+table
+{
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+table thead tr th
+{
+    color: #666666;
+    font-weight: 300;
+    font-size: 14px;
+    text-align: left;
+}
+
+table thead tr th, 
+table tbody tr td
+{
+    padding: 20px 0px;
+}
