@@ -45,7 +45,9 @@
             </a>
 
         {% else %}
-            Votre panier est vide...
+            <p>
+                Votre panier est vide... Retrouvez la liste des produits en cliquant <a href="{{path('getProducts')}}" class="products">ici</a>.
+            </p>
         {% endif %}
     
     </section>
