@@ -11,10 +11,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class OrderController extends AbstractController
 {
     #[Route('/cart', name: 'getCart')]
+    #[IsGranted('ROLE_USER')]
     public function getCart(
         #[CurrentUser] ?User $user,
         ProductRepository $productRepository,
@@ -49,6 +51,7 @@ final class OrderController extends AbstractController
     }
 
     #[Route('/clear-cart', name: 'clearCart')]
+    #[IsGranted('ROLE_USER')]
     public function clearCart(
         #[CurrentUser] ?User $user,
         EntityManagerInterface $entityManager,
@@ -69,6 +72,7 @@ final class OrderController extends AbstractController
     }
 
     #[Route('/cart/add/{id}', name: 'addToCart')]
+    #[IsGranted('ROLE_USER')]
     public function addToCart(
         #[CurrentUser] ?User $user,
         int $id,
@@ -76,13 +80,6 @@ final class OrderController extends AbstractController
         EntityManagerInterface $entityManager,
     ): Response
     {
-        // Vérification de l'utilisateur, si non connecté : On l'envoi sur la page de login
-        if(!$user)
-        {
-            $this->addFlash('error', 'Vous devez être connecté'); // Pas utilisable
-            return $this->redirectToRoute(route: 'login');
-        }
-
         // Récupération du produit
         $product = $productReposity->find($id);
 
@@ -123,11 +120,12 @@ final class OrderController extends AbstractController
 
         // Recalcul automatique du prix total sans TVA
         $price = 0;
-        foreach($user->getOrderclass()->getItems() as $i)
+        foreach($order->getItems() as $i)
         {
             $price += $i->getProduct()->getPrice() * $i->getQuantity();
         }
         $order->setTotalPriceNoVAT($price);
+        $entityManager->persist($order);
 
         $entityManager->flush();
 

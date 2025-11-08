@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-use Symfony\Flex\Update\RecipeUpdate;
 
 final class ProfileController extends AbstractController
 {
@@ -22,7 +21,6 @@ final class ProfileController extends AbstractController
     ): Response
     {
         $apiAccess = $user->hasApiAccess();
-
         return $this->render('profile/index.html.twig', [
             'controller_name'   =>  'ProfileController',
             'apiAccess'         =>  $apiAccess,
@@ -46,22 +44,17 @@ final class ProfileController extends AbstractController
                 ->setParameter('order', $order)
                 ->getQuery()
                 ->getResult();
-
             foreach ($invoices as $invoice) {
                 $entityManager->remove($invoice);
             }
-
             // Supprimer tous les items
             foreach ($order->getItems() as $item) {
                 $entityManager->remove($item);
             }
-
             $entityManager->remove($order);
         }
-
         $entityManager->remove($user);
         $entityManager->flush();
-
         // Déconnecter l'utilisateur avant la redirection
         $security->logout(false);
 
