@@ -26,7 +26,7 @@ class Order
     #[ORM\OneToMany(targetEntity: Item::class, mappedBy: 'orderClass', orphanRemoval: true)]
     private Collection $items;
 
-    #[ORM\OneToOne(mappedBy: 'orderclass', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'orderclass', cascade: ['persist'])]
     private ?User $user = null;
 
     public function __construct()

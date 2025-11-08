@@ -58,7 +58,8 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 - [ ] Mise en place du système de commandes.
     - [x] Route pour ajouter un produit au panier
     - [x] Extension Twig pour afficher le nombre de produits dans le panier
-    - [ ] Route pour afficher le panier
+    - [x] Route pour afficher le panier
+    - [ ] Route pour vider le panier
 - [ ] Création de la page Mon Compte
 
 ### ÉTAPE 4

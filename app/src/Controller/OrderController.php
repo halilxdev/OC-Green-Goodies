@@ -21,10 +21,51 @@ final class OrderController extends AbstractController
         EntityManagerInterface $entityManager,
     ): Response
     {
+        $items = [];
+        $totalPrice = 0;
+
+        if($user && !empty($user->getOrderclass()))
+        {
+            $order = $user->getOrderClass()->getItems();
+            foreach($order as $item)
+            {
+                $items[] = [
+                    'id'        =>  $item->getProduct()->getId(),
+                    'name'      =>  $item->getProduct()->getName(),
+                    'price'     =>  $item->getProduct()->getPrice() * $item->getQuantity(),
+                    'quantity'  =>  $item->getQuantity(),
+                    'picture'   =>  $item->getProduct()->getPicture(),
+                ];
+            }
+            $totalPrice = $user->getOrderclass()->getTotalPriceNoVAT();
+        }
+
         return $this->render('order/index.html.twig', [
             'controller_name'   =>  'HomeController',
+            'items'             =>  $items,
+            'totalPrice'        =>  $totalPrice,
         ]);
 
+    }
+
+    #[Route('/clear-cart', name: 'clearCart')]
+    public function clearCart(
+        #[CurrentUser] ?User $user,
+        EntityManagerInterface $entityManager,
+    ): Response
+    {
+        $order = $user->getOrderclass();
+        if ($order) {
+            // Supprimer tous les items d'abord
+            foreach ($order->getItems() as $item) {
+                $entityManager->remove($item);
+            }
+            $user->removeOrderclass();
+            $entityManager->remove($order);
+            $entityManager->persist($user);
+        }
+        $entityManager->flush();
+        return $this->redirectToRoute('getCart');
     }
 
     #[Route('/cart/add/{id}', name: 'addToCart')]

@@ -204,4 +204,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function removeOrderclass(): static
+    {
+        $this->setOrderclass(null);
+        return $this;
+    }
+
 }
