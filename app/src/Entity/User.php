@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -42,13 +44,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $hasApiAccess = null;
 
-    #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
-    private ?Order $orderclass = null;
+    /**
+     * @var Collection<int, Order>
+     */
+    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'UserClass', orphanRemoval: true)]
+    private Collection $OrderClass;
 
     public function __construct()
     {
         $this->setRoles(['ROLE_USER']);
         $this->setHasApiAccess(false);
+        $this->OrderClass = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -174,21 +180,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getOrderclass(): ?Order
+    /**
+     * @return Collection<int, Order>
+     */
+    public function getOrderClass(): Collection
     {
-        return $this->orderclass;
+        return $this->OrderClass;
     }
 
-    public function setOrderclass(?Order $orderclass): static
+    public function addOrderClass(Order $orderClass): static
     {
-        $this->orderclass = $orderclass;
+        if (!$this->OrderClass->contains($orderClass)) {
+            $this->OrderClass->add($orderClass);
+            $orderClass->setUserClass($this);
+        }
 
         return $this;
     }
 
-    public function removeOrderclass(): static
+    public function removeOrderClass(Order $orderClass): static
     {
-        $this->setOrderclass(null);
+        if ($this->OrderClass->removeElement($orderClass)) {
+            // set the owning side to null (unless already changed)
+            if ($orderClass->getUserClass() === $this) {
+                $orderClass->setUserClass(null);
+            }
+        }
+
         return $this;
     }
 

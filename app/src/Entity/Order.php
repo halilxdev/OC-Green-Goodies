@@ -26,8 +26,9 @@ class Order
     #[ORM\OneToMany(targetEntity: Item::class, mappedBy: 'orderClass', orphanRemoval: true)]
     private Collection $items;
 
-    #[ORM\OneToOne(mappedBy: 'orderclass', cascade: ['persist'])]
-    private ?User $user = null;
+    #[ORM\ManyToOne(inversedBy: 'OrderClass')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $UserClass = null;
 
     public function __construct()
     {
@@ -81,24 +82,14 @@ class Order
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getUserClass(): ?User
     {
-        return $this->user;
+        return $this->UserClass;
     }
 
-    public function setUser(?User $user): static
+    public function setUserClass(?User $UserClass): static
     {
-        // unset the owning side of the relation if necessary
-        if ($user === null && $this->user !== null) {
-            $this->user->setOrderclass(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($user !== null && $user->getOrderclass() !== $this) {
-            $user->setOrderclass($this);
-        }
-
-        $this->user = $user;
+        $this->UserClass = $UserClass;
 
         return $this;
     }
