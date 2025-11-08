@@ -55,11 +55,12 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
     - [x] Système simple fonctionnel
     - [ ] Système sécurisé (Asserts sur les Entity, Vérification dans le Controller)
 - [x] Gérer la récup. DQL et l'affichage des produits et de la liste de produits.
-- [ ] Mise en place du système de commandes.
+- [x] Mise en place du système de commandes.
     - [x] Route pour ajouter un produit au panier
     - [x] Extension Twig pour afficher le nombre de produits dans le panier
     - [x] Route pour afficher le panier
-    - [ ] Route pour vider le panier
+    - [x] Route pour vider le panier
+    - [ ] Transformation d'un panier en commande/facture
 - [ ] Création de la page Mon Compte
 
 ### ÉTAPE 4
@@ -70,6 +71,7 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 
 ### BONUS
 
+- [ ] Confirmation flash (Javascript) [Ajout au panier, Activation de l'accès API, etc...]
 - [ ] Front-End Responsive
 
 ## Cheatsheet

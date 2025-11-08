@@ -1,0 +1,63 @@
+.profilePage
+{
+    width: 100%;
+    min-height: calc(100vh - 81px - 81px);
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    background-color: var(--beige);
+    overflow: hidden;
+}
+.profilePageMaxWidth
+{
+    width: 100%;
+    height: 100%;
+    max-width: 604px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding-top: 20px;
+    padding-bottom: 100px;
+    gap: 20px;
+}
+
+h1
+{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+h2
+{
+    font-weight: 500;
+    font-size: 14px;
+}
+.profileItem
+{
+    width: 100%;
+    min-height: 81px;
+    background-color: var(--white);
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 20px;
+}
+.objectButton
+{
+    height: 77px;
+    width: 100%;
+    background-color: #565656;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 0;
+    border: none;
+    margin: 0 auto;
+}

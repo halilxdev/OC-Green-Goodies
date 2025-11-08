@@ -45,18 +45,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $hasApiAccess = null;
 
-    /**
-     * @var Collection<int, Invoice>
-     */
-    #[ORM\OneToMany(targetEntity: Invoice::class, mappedBy: 'user', orphanRemoval: true)]
-    private Collection $invoices;
-
     #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
     private ?Order $orderclass = null;
 
     public function __construct()
     {
-        $this->invoices = new ArrayCollection();
         $this->setRoles(['ROLE_USER']);
         $this->setHasApiAccess(false);
     }
@@ -182,14 +175,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->hasApiAccess = $hasApiAccess;
 
         return $this;
-    }
-
-    /**
-     * @return Collection<int, Invoice>
-     */
-    public function getInvoices(): Collection
-    {
-        return $this->invoices;
     }
 
     public function getOrderclass(): ?Order

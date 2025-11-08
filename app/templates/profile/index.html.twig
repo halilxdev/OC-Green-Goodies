@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+{% block body %}
+ 
+<link href="{{ asset('css/profile.css') }}" rel="stylesheet" type="text/css"/>
+ 
+<section class="profilePage">
+
+    <section class="profilePageMaxWidth">
+
+        <h1>Mon compte</h1>
+
+        <section class="profileItem">
+            <h2>Mes commandes</h2>
+        </section>
+
+        <section class="profileItem">
+            <h2>Mon accès API</h2>
+            <a href="{{path('toggleApi')}}" class="objectButton">
+                {% if apiAccess is true %}
+                    Désactiver mon accès API
+                {% else %}
+                    Activer mon accès API
+                {% endif %}
+            </a>
+        </section>
+
+        <section class="profileItem">
+            <a href="{{path('deleteProfile')}}" class="objectButton">
+                Supprimer mon compte
+            </a>
+        </section>
+    
+    </section>
+
+</section>
+
+{% endblock %}
