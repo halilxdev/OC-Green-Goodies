@@ -40,13 +40,38 @@
 
                     <ul>
                         {% if app.user %}
-                            <li><a href="{{ path('getProducts') }}">Nos produits</a></li>
-                            <li><a href="{# {{ path('') }} #}">Mon panier</a></li>
-                            <li><a href="{# {{ path('') }} #}">Mon compte</a></li>
-                            <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+                            <li>
+                                <a href="{{ path('getProducts') }}">
+                                    <p>Nos produits</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('getCart') }}">
+                                    <p>Mon panier</p>
+                                        <span class="productInCart">{{ productInCart }}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('getProfile') }}">
+                                    <p>Mon compte</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('logout') }}">
+                                    <p>Déconnexion</p>
+                                </a>
+                            </li>
                         {% else %}
-                            <li><a href="{{ path('login') }}">Connexion</a></li>
-                            <li><a href="{{ path('register') }}">Inscription</a></li>
+                            <li>
+                                <a href="{{ path('login') }}">
+                                    <p>Connexion</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('register') }}">
+                                    <p>Inscription</p>
+                                </a>
+                            </li>
                         {% endif %}
 
                     </ul>

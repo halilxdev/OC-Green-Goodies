@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+{% block body %}
+ 
+<link href="{{ asset('css/profile.css') }}" rel="stylesheet" type="text/css"/>
+ 
+<section class="profilePage">
+
+    <section class="profilePageMaxWidth">
+
+        <h1>Mon compte</h1>
+
+        <section class="profileItem">
+            <h2>Mes commandes</h2>
+            {% if invoices is not empty %}
+            <table border=1 frame=void rules=rows>
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Date</th>
+                        <th>Prix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for invoice in invoices %}
+                    <tr>
+                        <td>{{invoice.id}}</td>
+                        <td>{{invoice.date|date("m/d/Y")}}</td>
+                        <td>{{invoice.total|number_format(2, ',', '.')}} €</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>Aucune commande pour l'instant...</p>
+            {% endif %}
+        </section>
+
+        <section class="profileItem">
+            <h2>Mon accès API</h2>
+            <a href="{{path('toggleApi')}}" class="objectButton">
+                {% if apiAccess is true %}
+                    Désactiver mon accès API
+                {% else %}
+                    Activer mon accès API
+                {% endif %}
+            </a>
+        </section>
+
+        <section class="profileItem">
+            <a href="{{path('deleteProfile')}}" class="objectButton">
+                Supprimer mon compte
+            </a>
+        </section>
+    
+    </section>
+
+</section>
+
+{% endblock %}

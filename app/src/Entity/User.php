@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
@@ -48,21 +47,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, Order>
      */
-    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'user', orphanRemoval: true)]
-    private Collection $orders;
-
-    /**
-     * @var Collection<int, Invoice>
-     */
-    #[ORM\OneToMany(targetEntity: Invoice::class, mappedBy: 'user', orphanRemoval: true)]
-    private Collection $invoices;
+    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'UserClass', orphanRemoval: true)]
+    private Collection $OrderClass;
 
     public function __construct()
     {
-        $this->orders = new ArrayCollection();
-        $this->invoices = new ArrayCollection();
         $this->setRoles(['ROLE_USER']);
         $this->setHasApiAccess(false);
+        $this->OrderClass = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -191,57 +183,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return Collection<int, Order>
      */
-    public function getOrders(): Collection
+    public function getOrderClass(): Collection
     {
-        return $this->orders;
+        return $this->OrderClass;
     }
 
-    public function addOrder(Order $order): static
+    public function addOrderClass(Order $orderClass): static
     {
-        if (!$this->orders->contains($order)) {
-            $this->orders->add($order);
-            $order->setUser($this);
+        if (!$this->OrderClass->contains($orderClass)) {
+            $this->OrderClass->add($orderClass);
+            $orderClass->setUserClass($this);
         }
 
         return $this;
     }
 
-    public function removeOrder(Order $order): static
+    public function removeOrderClass(Order $orderClass): static
     {
-        if ($this->orders->removeElement($order)) {
+        if ($this->OrderClass->removeElement($orderClass)) {
             // set the owning side to null (unless already changed)
-            if ($order->getUser() === $this) {
-                $order->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Invoice>
-     */
-    public function getInvoices(): Collection
-    {
-        return $this->invoices;
-    }
-
-    public function addInvoice(Invoice $invoice): static
-    {
-        if (!$this->invoices->contains($invoice)) {
-            $this->invoices->add($invoice);
-            $invoice->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeInvoice(Invoice $invoice): static
-    {
-        if ($this->invoices->removeElement($invoice)) {
-            // set the owning side to null (unless already changed)
-            if ($invoice->getUser() === $this) {
-                $invoice->setUser(null);
+            if ($orderClass->getUserClass() === $this) {
+                $orderClass->setUserClass(null);
             }
         }
 

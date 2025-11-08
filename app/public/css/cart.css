@@ -1,0 +1,170 @@
+.cartPage
+{
+    width: 100%;
+    min-height: calc(100vh - 81px - 81px);
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    background-color: var(--beige);
+    overflow: hidden;
+}
+.cartPageMaxWidth
+{
+    width: 100%;
+    height: 100%;
+    max-width: 604px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    gap: 20px;
+}
+
+h1
+{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 auto;
+}
+.clearCart
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: #666666;
+}
+.clearCart:hover
+{
+    text-decoration: underline 1px #666666;
+}
+
+.items
+{
+    width: 604px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 2px;
+}
+.items a
+{
+    width: 100%;
+}
+article
+{
+    width: 100%;
+    height: 204px;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    background-color: white;
+}
+.coverImage
+{
+    width: 36%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    overflow: hidden;
+}
+.coverImage .cropImage
+{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.coverImage .cropImage img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+.coverImage .cropImage img:hover
+{
+    transform: scale(+110%);
+}
+.productInfos
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+    height: 100%;
+}
+h2
+{
+    font-size: 14px;
+    font-weight: 600;
+}
+.qty
+{
+    font-weight: 300;
+    font-size: 14px;
+    color: #666666;
+}
+.price
+{
+    font-weight: 500;
+    font-size: 18px;
+    color: #333333;
+}
+
+.total
+{
+    background-color: #fdf9f4;
+    width: 100%;
+    height: 81px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    align-items: end;
+    padding: 0px 40px;
+}
+.totalPrice
+{
+    font-size: 14px;
+    font-weight: 500;
+    color: #333333;
+}
+.totalPrice span
+{
+    font-size: 20px;
+}
+.orderFee
+{
+    font-size: 12px;
+    font-weight: 400;
+    color: #666666;
+}
+
+.confirmOrder
+{
+    width: 470px;
+    height: 77px;
+    background-color: #565656;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 0;
+    border: none;
+    margin: 0 auto;
+}
+.products
+{
+    font-weight: 600;
+    color: var(--green);
+}

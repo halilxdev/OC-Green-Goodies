@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande n°{% endblock %}
+
+{% block body %}
+ 
+<link href="{{ asset('css/invoice-informations.css') }}" rel="stylesheet" type="text/css"/>
+ 
+<section class="invoicePage">
+
+    <section class="invoicePageMaxWidth">
+
+        <div class="title">
+            <h1>Vos informations</h1>
+        </div>
+
+        {% if form_errors(InvoiceForm) is not empty %}
+        <div class="error">
+            <img src="{{asset('icons/alert-circle-sharp.svg')}}" alt="Icône d'erreur">
+            <p>{{ form_errors(InvoiceForm) }}</p>
+        </div>
+        {% endif %}
+
+        {{ form_start(InvoiceForm) }}
+
+            <div class="colinput">
+                {{ form_label(InvoiceForm.address) }}
+                {{ form_widget(InvoiceForm.address) }}
+            </div>
+
+            <div class="rowinput">
+                <div class="colinput" style="width: 40%;">
+                    {{ form_label(InvoiceForm.zipcode) }}
+                    {{ form_widget(InvoiceForm.zipcode) }}
+                </div>
+
+                <div class="colinput">
+                    {{ form_label(InvoiceForm.city) }}
+                    {{ form_widget(InvoiceForm.city) }}
+                </div>
+            </div>
+
+            <div class="colinput">
+                <p class="priceInfos">Sous-total : <span>{{ order.totalAmount|number_format(2, ',', '.') }} €</span></p>
+                <p class="priceInfos">TVA 20 % : <span>{{ order.VAT|number_format(2, ',', '.') }} €</span></p>
+                <p class="priceInfos">Montant à régler : <span>{{ order.totalPrice|number_format(2, ',', '.') }} €</span></p>
+            </div>
+
+            <button type="submit">Terminer</button>
+
+
+        {{ form_end(InvoiceForm) }}
+    
+    </section>
+
+</section>
+
+{% endblock %}

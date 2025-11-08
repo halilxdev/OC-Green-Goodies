@@ -38,6 +38,20 @@ class Invoice
     #[ORM\Column]
     private ?int $zipCode = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTime $date = null;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
+
+    public function setId(int $id): static
+    {
+        $this->id = $id;
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -123,6 +137,18 @@ class Invoice
     public function setZipCode(int $zipCode): static
     {
         $this->zipCode = $zipCode;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTime
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTime $date): static
+    {
+        $this->date = $date;
 
         return $this;
     }

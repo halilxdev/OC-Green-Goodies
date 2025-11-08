@@ -2,7 +2,7 @@
 
 # Green Goodies — Site e-commerce
 
-> J'ai réalisé ce projet lors de ma formation OpenClassRooms. Ce projet implique la création en Symfony d'un front-end et d'un back-end API.  
+> J'ai réalisé ce projet lors de ma formation OpenClassRooms. Ce projet implique la création d'un projet en Symfony.
 > Après avoir passé deux semaines en séparant le back et le front via deux projets Symfony, je pense que le mieux est, comme le suggère le projet, de faire une App monolithique. 
 > J'ai également pris la liberté d'utiliser Docker.
 
@@ -25,11 +25,13 @@ Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 
 ### Base de données
 
-#### Création de la base de données
-* `docker exec -it green_goodies_app php bin/console doctrine:database:create`
 #### Suppression de la base de données
 En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le dossier `migrations` et exécutez cette commande
 * `docker exec -it green_goodies_app php bin/console doctrine:database:drop --force`
+
+
+#### Création de la base de données
+* `docker exec -it green_goodies_app php bin/console doctrine:database:create`
 #### Mise à jour de la base de données
 * `docker exec -it green_goodies_app php bin/console make:migration`
 * `docker exec -it green_goodies_app php bin/console doctrine:migrations:migrate`
@@ -38,36 +40,39 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 
 ## To-do list !
 
-### BACK-END
+### ÉTAPE 2
 
 - [x] Créer et configurez votre base de données.
 - [x] Créer les entités à partir du modèle des données et les repositories associés.  
-![Diagramme UML](https://github.com/halilxdev/OC-Green-Goodies/tree/main/misc/UML.png)  
-- [x] Créer quelques produits à l’aide de fixtures.
-- [x] Retravailler la base de données. (Tableau relationnel `order_item_product` inutile)
-- [x] Créer des Routes avec le verbe HTTP `GET` pour Product(s)
-    - [ ] Gérer les erreurs
-- [ ] Créer des routes avec des verbes HTTP `GET, POST, PUT, DELETE` pour l'entité `User`
-    - [x] `POST`/api/login_check -> Permet de récupérer le token JWT d'un compte existant
-    - [x] `POST`/api/user -> Permet de créer un profil
-    - [ ] `UPDATE`/api/user -> Permet de mettre à jour un profil
-    - [ ] `DELETE`/api/user -> Permet de supprimer un profil
+![Diagramme UML](https://github.com/halilxdev/OC-Green-Goodies/blob/main/misc/UML.png)  
+- [x] Créer 9 produits à l’aide de fixtures.
+- [x] Créer en réalisant la structure générale (header / footer) dynamique selon l'état de l'utilisateur (connecté ou non).
+
+### ÉTAPE 3
+
+- [ ] Système de connexion
+    - [x] Création des templates et des forms
+    - [x] Système simple fonctionnel
+    - [ ] Système sécurisé (Asserts sur les Entity, Vérification dans le Controller)
+- [x] Gérer la récup. DQL et l'affichage des produits et de la liste de produits.
+- [x] Mise en place du système de commandes.
+    - [x] Route pour ajouter un produit au panier
+    - [x] Extension Twig pour afficher le nombre de produits dans le panier
+    - [x] Route pour afficher le panier
+    - [x] Route pour vider le panier
+    - [ ] Transformation d'un panier en commande/facture
+    - [ ] IMPORTANT -> Order -> Faire une vérif si facture existante pour créer un nouvel order per user
+- [ ] Création de la page Mon Compte
+
+### ÉTAPE 4
+
+- [ ] Développer un Controller API
 - [ ] EventSubscriber
-- [ ] Rendre sécurisé la création de données à partir des entités (Symfony Asserts)
-
-### FRONT-END
-
-- [x] Créer en réalisant la structure générale (header / footer).
-- [x] Créer le routeur pour la page d'accueil
-- [x] Appeler la base de données pour la page d'accueil
-- [x] Créer le template de page produit.  
-> Point à relever :  
-    > Dû à la séparation du frontend et du backend je n'ai pas utilisé la méthode qui m'a été donné en cours pour créer des formulaires de registration et login.
-- [x] Créer le template de connexion et d'inscription
 - [ ] Se renseigner sur le [CSS/JS Minifier](https://github.com/sensiolabs/minify-bundle)
 
 ### BONUS
 
+- [ ] Confirmation flash (Javascript) [Ajout au panier, Activation de l'accès API, etc...]
 - [ ] Front-End Responsive
 
 ## Cheatsheet

@@ -17,10 +17,6 @@ class Order
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'orders')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
-
     #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
     private ?string $totalPriceNoVAT = null;
 
@@ -30,6 +26,10 @@ class Order
     #[ORM\OneToMany(targetEntity: Item::class, mappedBy: 'orderClass', orphanRemoval: true)]
     private Collection $items;
 
+    #[ORM\ManyToOne(inversedBy: 'OrderClass')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $UserClass = null;
+
     public function __construct()
     {
         $this->items = new ArrayCollection();
@@ -38,18 +38,6 @@ class Order
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): static
-    {
-        $this->user = $user;
-
-        return $this;
     }
 
     public function getTotalPriceNoVAT(): ?string
@@ -90,6 +78,18 @@ class Order
                 $item->setOrderClass(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUserClass(): ?User
+    {
+        return $this->UserClass;
+    }
+
+    public function setUserClass(?User $UserClass): static
+    {
+        $this->UserClass = $UserClass;
 
         return $this;
     }

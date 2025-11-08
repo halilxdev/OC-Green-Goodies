@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block body %}
+ 
+<link href="{{ asset('css/cart.css') }}" rel="stylesheet" type="text/css"/>
+ 
+<section class="cartPage">
+
+    <section class="cartPageMaxWidth">
+
+        <h1>Mon panier</h1><br>
+
+        {% if items is not empty %}
+
+            <a href="{{path('clearCart')}}" class="clearCart">x Vider le panier</a>
+
+            <div class="items">
+                {% for item in items %}
+                    <a href="{{ path('getProduct', {id: item.id}) }}">
+                        <article>
+                            <div class="coverImage">
+                                <div class="cropImage">
+                                    <img src="{{ asset('images/' ~ item.picture) }}" alt="Image du projet : {{item.name}}">
+                                </div>
+                            </div>
+                            <div class="productInfos">
+                                <h2>{{item.name}}</h2>
+                                <p class="qty">Quantité : {{item.quantity}}</p>
+                                <p class="price">{{ item.price|number_format(2, ',', '.') }} €</p>
+                            </div>
+                        </article>
+                    </a>
+                {% endfor %}
+            </div>
+
+            <div class="total">
+                <p class="totalPrice">Total panier :  <span>{{ totalPrice|number_format(2, ',', '.') }} €</span></p>
+                <p class="orderFee">Frais de livraison : Offert</p>
+            </div>
+
+            <a href="{{path('confirmOrder')}}" class="confirmOrder">
+                Valider la commande
+            </a>
+
+        {% else %}
+            <p>
+                Votre panier est vide... Retrouvez la liste des produits en cliquant <a href="{{path('getProducts')}}" class="products">ici</a>.
+            </p>
+        {% endif %}
+    
+    </section>
+
+</section>
+
+{% endblock %}

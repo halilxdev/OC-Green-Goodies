@@ -5,7 +5,7 @@ header
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--beige);
+    background-color: var(--white);
     padding: 0px 100px;
 }
 
@@ -50,5 +50,20 @@ header
 }
 .headerLinks ul li a
 {
-    font-weight: 400;
+    font-weight: 300;
+    position: relative;
+}
+.productInCart{
+    position: absolute;
+    right: -16px;
+    top: -8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 500px;
+    background-color: var(--green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 10px;
 }

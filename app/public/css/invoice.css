@@ -1,0 +1,23 @@
+.invoicePage
+{
+    width: 100%;
+    min-height: calc(100vh - 81px - 81px);
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    background-color: var(--beige);
+    overflow: hidden;
+}
+.invoicePageMaxWidth
+{
+    width: 100%;
+    height: 100%;
+    max-width: 604px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    gap: 20px;
+}
