@@ -37,6 +37,12 @@ final class ProductController extends AbstractController
         EntityManagerInterface $entityManager,
     ): Response
     {
+        // Chercher le produit
+        $product = $productRepository->find($id);
+        $existingItem = null;
+        // Check si utilisateur connecté
+        if($user)
+        {
         // Check si le produit est déjà présent dans la commande en cours
 
             // Chercher la commande en cours
@@ -52,8 +58,6 @@ final class ProductController extends AbstractController
                 $entityManager->refresh($order);
             }
 
-            // Chercher le produit
-            $product = $productRepository->find($id);
             // Vérifier si le produit existe dans la commande en cours
             $existingItem = null;
             foreach($order->getItems() as $i)
@@ -66,6 +70,7 @@ final class ProductController extends AbstractController
                     $existingItem = $i;
                 }
             }
+        }
 
         return $this->render('product/detail.html.twig', [
             'controller_name'   =>  'ProductController',
