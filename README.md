@@ -2,11 +2,23 @@
 
 # Green Goodies — Site e-commerce
 
+## Images
+
+Ancien volume de toutes les images du projet : 73,1 Mo
+Volume des images après une compression via un service web : 13,5 Mo
+Soit une diminution de 81,53 % de son poids original
+
+## Base de données
+
+
+
+# Produit technique
+
+## Lancer le projet
+
 > J'ai réalisé ce projet lors de ma formation OpenClassRooms. Ce projet implique la création d'un projet en Symfony.
 > Après avoir passé deux semaines en séparant le back et le front via deux projets Symfony, je pense que le mieux est, comme le suggère le projet, de faire une App monolithique. 
 > J'ai également pris la liberté d'utiliser Docker.
-
-## Lancer le projet
 
 Pour visualiser ou manipuler le projet, assurez-vous d'avoir Docker desktop.
 
