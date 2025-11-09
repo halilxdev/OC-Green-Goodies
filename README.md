@@ -2,11 +2,10 @@
 
 # Green Goodies — Site e-commerce
 
-## Images
+## Introduction
 
-Ancien volume de toutes les images du projet : **73,1 Mo**  
-Volume des images après une compression via un service web : **13,5 Mo**  
-Soit une diminution de **81,53 %** de son poids original
+GreenGoodies, une boutique lyonnaise spécialisée dans la vente de produits biologiques, éthiques et écologiques, souhaite élargir sa cible commerciale. 
+Dans le cadre de ma formation OpenClassRomms. Je suis amené à développer un site web e-commerce en PHP Symfony via un projet monolithique faisant office de backend et de frontend.
 
 ## Base de données
 
@@ -114,6 +113,10 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
     - [x] Vérification si l'utilisateur a activé l'accès API
 - [x] EventSubscriber
 - [x] Images compressées & CSS/JS Minifié [CSS/JS Minifier](https://github.com/sensiolabs/minify-bundle)
+
+Ancien volume de toutes les images du projet : **73,1 Mo**  
+Volume des images après une compression via un service web : **13,5 Mo**  
+Soit une diminution de **81,53 %** de son poids original
 
 ### BONUS
 
