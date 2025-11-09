@@ -17,6 +17,31 @@ Soit une diminution de **81,53 %** de son poids original
 | 1 | halilxvb@outlook.fr | ["ROLE_USER"] | *** | Halil | DDDdddd | 1 |
 | 2 | j.courbet@gmail.com | ["ROLE_USER"] | *** | Julien | Courbet | 0 |
 
+### Product
+
+| id | name | short_description | full_description | price | picture |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Kit d'hygiène recyclable | Pour une salle de bain éco-friendly | Transformez votre routine[...] | 24.99 | 78e3e6[...] |
+| 2 | Shot tropical | Fruits frais, pressés à froid | Savourez l'authenticité des[...] | 4.50 | 0d3617[...] |
+
+### Order
+
+| id | user_class_id | total_price_no_vat |
+| --- | --- | --- |
+| 1 | 1 | 24.99 |
+
+### Item
+
+| id | product_id | order_class_id | quantity |
+| --- | --- | --- | --- |
+| 1 | 1 | 1 | 2 |
+
+### Invoice
+
+| id | order_class_id | vat | total | status | address | city | zip_code | date |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 1 | 5.00 | 29.99 | Done | 10 rue de la République | Metz | 57000 | 09/11/2025 |
+
 # Produit technique
 
 ## Lancer le projet
