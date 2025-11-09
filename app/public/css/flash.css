@@ -1,0 +1,8 @@
+.flash-container{position:fixed;top:20px;right:20px;z-index:999;}
+.flash-message{padding:12px 20px;margin:5px 0;border-radius:4px;color:#fff;font-size:14px;opacity:0;transform:translateX(100%);transition:all 0.3s ease;max-width:350px}
+.flash-message.show{opacity:1;transform:translateX(0)}
+.flash-success{background:#4CAF50;}
+.flash-error{background:#f44336}
+.flash-warning{background:#ff9800}
+.flash-info{background:#2196F3}
+.flash-close{float:right;cursor:pointer;margin-left:15px;font-weight:bold}

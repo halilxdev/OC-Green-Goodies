@@ -26,3 +26,9 @@ final class HomeController extends AbstractController
         ]);
     }
 }
+
+// HELPER FLASH WARNING
+//   $this->addFlash('success', 'Opération réussie !');
+//   $this->addFlash('error', 'Une erreur est survenue');
+//   $this->addFlash('warning', 'Attention !');
+//   $this->addFlash('info', 'Information');

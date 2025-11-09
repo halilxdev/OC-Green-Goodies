@@ -14,6 +14,7 @@
             <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css"/>
             <link href="{{ asset('css/header.css') }}" rel="stylesheet" type="text/css"/>
             <link href="{{ asset('css/footer.css') }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('css/flash.css') }}" rel="stylesheet" type="text/css"/>
         {% endblock %}
 
         {% block javascripts %}
@@ -21,6 +22,7 @@
         {% endblock %}
     </head>
     <body>
+        <div class="flash-container" id="flashContainer"></div>
 
         <header>
             {% block header %}
@@ -92,5 +94,33 @@
             {% endblock %}
         </footer>
 
+        <script>
+            function showFlash(message, type = 'info', duration = 5000) {
+                const container = document.getElementById('flashContainer');
+                const flash = document.createElement('div');
+                flash.className = `flash-message flash-${type}`;
+                flash.innerHTML = `${message}<span class="flash-close">&times;</span>`;
+
+                container.appendChild(flash);
+                setTimeout(() => flash.classList.add('show'), 10);
+
+                const close = flash.querySelector('.flash-close');
+                close.onclick = () => removeFlash(flash);
+
+                setTimeout(() => removeFlash(flash), duration);
+            }
+
+            function removeFlash(flash) {
+                flash.classList.remove('show');
+                setTimeout(() => flash.remove(), 300);
+            }
+
+            // Flash messages from Symfony
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    showFlash('{{ message|e('js') }}', '{{ type }}');
+                {% endfor %}
+            {% endfor %}
+        </script>
     </body>
 </html>

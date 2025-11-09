@@ -67,6 +67,7 @@ final class ProfileController extends AbstractController
         // Déconnecter l'utilisateur avant la redirection
         $security->logout(false);
 
+        $this->addFlash('info', 'Le compte a bien été supprimé.');
         return $this->redirectToRoute('app_login');
     }
 
@@ -83,11 +84,13 @@ final class ProfileController extends AbstractController
             $user->setHasApiAccess(0);
             $entityManager->persist($user);
             $entityManager->flush();
+            $this->addFlash('success', 'L\'accès API a bien été révoqué.');
             return $this->redirectToRoute('app_getProfile');
         }else{
             $user->setHasApiAccess(1);
             $entityManager->persist($user);
             $entityManager->flush();
+            $this->addFlash('success', 'L\accès API a bien été activé.');
             return $this->redirectToRoute('app_getProfile');
         }
     }

@@ -75,6 +75,7 @@ final class OrderController extends AbstractController
             $entityManager->persist($user);
         }
         $entityManager->flush();
+        $this->addFlash('info', 'Le panier a bien été vidé.');
         return $this->redirectToRoute('app_getCart');
     }
 
@@ -139,6 +140,7 @@ final class OrderController extends AbstractController
         $entityManager->flush(); // Flush final
 
         // Redirection vers la page initiale
+        $this->addFlash('success', 'Produit ajouté dans votre panier !');
         return $this->redirectToRoute('app_getProduct', [
             'id'                =>  $id,
         ]);

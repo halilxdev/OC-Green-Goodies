@@ -94,6 +94,7 @@ final class InvoiceController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function congratsInvoice(): Response
     {
+        $this->addFlash('success', 'Votre commande a été validée');
         return $this->render('invoice/congrats.html.twig', [
             'controller_name'   =>  'InvoiceController',
         ]);

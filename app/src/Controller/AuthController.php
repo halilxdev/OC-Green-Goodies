@@ -30,7 +30,8 @@ final class AuthController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_home');
+            $this->addFlash('success', 'Inscription finalisée ! Nous vous invitons à vous connecter.');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('security/register.html.twig', [
