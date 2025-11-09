@@ -32,26 +32,4 @@ final class ProductController extends AbstractController
             'product'           =>  $product,
         ]);
     }
-
-    // API
-    // #[Route('/product/{id}', name: 'getProduct', requirements: ['id' => '\d+'])]
-    // public function getProduct(HttpClientInterface $httpClient, int $id): Response
-    // {
-    //     try {
-    //         $response = $httpClient->request(
-    //             'GET',
-    //             sprintf('http://backend:8000/api/product/'.$id)
-    //         );
-    //         $product = $response->toArray();
-    //         return $this->render('product/detail.html.twig', [
-    //             'controller_name'   =>  'ProductController',
-    //             'product'           =>  $product,
-    //         ]);
-    //     } catch (\Exception $e) {
-    //         return new JsonResponse([
-    //             'error' => 'Erreur lors de l\'appel à l\'API',
-    //             'message' => $e->getMessage()
-    //         ], 500);
-    //     }
-    // }
 }
