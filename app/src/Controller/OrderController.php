@@ -113,9 +113,27 @@ final class OrderController extends AbstractController
         }
 
         if ($existingItem) {
-            // Augmenter la quantité
-            $existingItem->setQuantity($existingItem->getQuantity() + 1);
+            // Récupérer la quantité donnée par l'utilisateur
+            $qty = intval($_POST['quantity']);
+            if($qty === 0)
+            {
+                $order->removeItem($existingItem);
+                $entityManager->persist($existingItem);
+                $entityManager->flush();
+                $this->addFlash('success', 'Produit supprimé de votre panier !');
+                return $this->redirectToRoute('app_getProduct', [
+                    'id'                =>  $id,
+                ]);
+            }
+            // Changer la quantité
+            $existingItem->setQuantity($qty);
             $entityManager->persist($existingItem);
+            $entityManager->persist($existingItem);
+            $entityManager->flush();
+            $this->addFlash('success', 'Produit mis à jour dans votre panier !');
+            return $this->redirectToRoute('app_getProduct', [
+                'id'                =>  $id,
+            ]);
         } else {
             // Créer un nouvel item
             $item = new Item();

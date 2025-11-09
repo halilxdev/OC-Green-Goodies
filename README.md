@@ -33,7 +33,7 @@ Dans le cadre de ma formation OpenClassRomms. Je suis amené à développer un s
 
 | id | product_id | order_class_id | quantity |
 | --- | --- | --- | --- |
-| 1 | 1 | 1 | 2 |
+| 1 | 1 | 1 | 1 |
 
 ### Invoice
 

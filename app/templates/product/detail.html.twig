@@ -5,7 +5,7 @@
 {% block body %}
  
 <link href="{{ asset('css/product.css') }}" rel="stylesheet" type="text/css"/>
- 
+
 <section class="productPage">
 
     <section class="productPageMaxWidth">
@@ -28,7 +28,14 @@
 
             <div class="flexGrow"></div>
 
+            {% if existing is empty %}
             <a href="{{ path('app_addToCart', {id:product.id}) }}">Ajouter au panier</a>
+            {% else %}
+            <form method="POST" action="{{ path('app_addToCart', {id:product.id}) }}">
+                <input type="number" name="quantity" id="quantity" min="0" max="10" value="{{existing.quantity}}">
+                <button type="submit">Mettre à jour</button>
+            </form>
+            {% endif %}
         
         </div>
     
