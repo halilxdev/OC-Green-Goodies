@@ -16,7 +16,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class ProfileController extends AbstractController
 {
-    #[Route('/profile', name: 'getProfile')]
+    #[Route('/profile', name: 'app_getProfile')]
     #[IsGranted('ROLE_USER')]
     public function getProfile(
         #[CurrentUser()] ?User $user,
@@ -35,7 +35,7 @@ final class ProfileController extends AbstractController
         ]);
     }
 
-    #[Route('/delete-profile', name: 'deleteProfile')]
+    #[Route('/delete-profile', name: 'app_deleteProfile')]
     #[IsGranted('ROLE_USER')]
     public function deleteProfile(
         #[CurrentUser()] ?User $user,
@@ -67,10 +67,10 @@ final class ProfileController extends AbstractController
         // Déconnecter l'utilisateur avant la redirection
         $security->logout(false);
 
-        return $this->redirectToRoute('login');
+        return $this->redirectToRoute('app_login');
     }
 
-    #[Route('/toggle-api', name: 'toggleApi')]
+    #[Route('/toggle-api', name: 'app_toggleApi')]
     #[IsGranted('ROLE_USER')]
     public function toggleApi(
         #[CurrentUser()] ?User $user,
@@ -83,12 +83,12 @@ final class ProfileController extends AbstractController
             $user->setHasApiAccess(0);
             $entityManager->persist($user);
             $entityManager->flush();
-            return $this->redirectToRoute('getProfile');
+            return $this->redirectToRoute('app_getProfile');
         }else{
             $user->setHasApiAccess(1);
             $entityManager->persist($user);
             $entityManager->flush();
-            return $this->redirectToRoute('getProfile');
+            return $this->redirectToRoute('app_getProfile');
         }
     }
 }

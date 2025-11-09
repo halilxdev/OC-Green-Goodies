@@ -22,7 +22,7 @@ final class OrderController extends AbstractController
     )
     {}
 
-    #[Route('/cart', name: 'getCart')]
+    #[Route('/cart', name: 'app_getCart')]
     #[IsGranted('ROLE_USER')]
     public function getCart(
         #[CurrentUser] ?User $user,
@@ -57,7 +57,7 @@ final class OrderController extends AbstractController
 
     }
 
-    #[Route('/clear-cart', name: 'clearCart')]
+    #[Route('/clear-cart', name: 'app_clearCart')]
     #[IsGranted('ROLE_USER')]
     public function clearCart(
         #[CurrentUser] ?User $user,
@@ -75,10 +75,10 @@ final class OrderController extends AbstractController
             $entityManager->persist($user);
         }
         $entityManager->flush();
-        return $this->redirectToRoute('getCart');
+        return $this->redirectToRoute('app_getCart');
     }
 
-    #[Route('/cart/add/{id}', name: 'addToCart')]
+    #[Route('/cart/add/{id}', name: 'app_addToCart')]
     #[IsGranted('ROLE_USER')]
     public function addToCart(
         #[CurrentUser] ?User $user,
@@ -139,7 +139,7 @@ final class OrderController extends AbstractController
         $entityManager->flush(); // Flush final
 
         // Redirection vers la page initiale
-        return $this->redirectToRoute('getProduct', [
+        return $this->redirectToRoute('app_getProduct', [
             'id'                =>  $id,
         ]);
 

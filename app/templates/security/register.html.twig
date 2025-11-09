@@ -57,13 +57,13 @@
                 <div class="rowinput">
                     {{ form_widget(registrationForm.agreeTerms) }}
                     <label for="{{ registrationForm.agreeTerms.vars.id }}">
-                        J'accepte les <a href="{{ path('terms') }}" class='terms'>CGU</a> de GreenGoodies
+                        J'accepte les <a href="{{ path('app_terms') }}" class='terms'>CGU</a> de GreenGoodies
                     </label>
                 </div>
 
                 <button type="submit">S'inscrire</button>
 
-                <a href="{{path('login')}}" class="alreadyHaveAccount">Déjà un compte ? Se connecter</a>
+                <a href="{{path('app_login')}}" class="alreadyHaveAccount">Déjà un compte ? Se connecter</a>
 
             {{ form_end(registrationForm) }}
 

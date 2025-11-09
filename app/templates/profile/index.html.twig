@@ -40,7 +40,7 @@
 
         <section class="profileItem">
             <h2>Mon accès API</h2>
-            <a href="{{path('toggleApi')}}" class="objectButton">
+            <a href="{{path('app_toggleApi')}}" class="objectButton">
                 {% if apiAccess is true %}
                     Désactiver mon accès API
                 {% else %}
@@ -50,7 +50,7 @@
         </section>
 
         <section class="profileItem">
-            <a href="{{path('deleteProfile')}}" class="objectButton">
+            <a href="{{path('app_deleteProfile')}}" class="objectButton">
                 Supprimer mon compte
             </a>
         </section>

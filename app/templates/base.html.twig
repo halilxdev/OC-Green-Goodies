@@ -25,7 +25,7 @@
         <header>
             {% block header %}
 
-                <a href="{{ path('home') }}">
+                <a href="{{ path('app_home') }}">
                     <div class="headerHomeLogo">
                         <div class="headerLogo">
                             g
@@ -41,34 +41,34 @@
                     <ul>
                         {% if app.user %}
                             <li>
-                                <a href="{{ path('getProducts') }}">
+                                <a href="{{ path('app_getProducts') }}">
                                     <p>Nos produits</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('getCart') }}">
+                                <a href="{{ path('app_getCart') }}">
                                     <p>Mon panier</p>
                                         <span class="productInCart">{{ productInCart }}</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('getProfile') }}">
+                                <a href="{{ path('app_getProfile') }}">
                                     <p>Mon compte</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('logout') }}">
+                                <a href="{{ path('app_logout') }}">
                                     <p>Déconnexion</p>
                                 </a>
                             </li>
                         {% else %}
                             <li>
-                                <a href="{{ path('login') }}">
+                                <a href="{{ path('app_login') }}">
                                     <p>Connexion</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('register') }}">
+                                <a href="{{ path('app_register') }}">
                                     <p>Inscription</p>
                                 </a>
                             </li>

@@ -13,7 +13,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 final class ProductController extends AbstractController
 {
-    #[Route('/products', name: 'getProducts')]
+    #[Route('/products', name: 'app_getProducts')]
     public function getProducts(ProductRepository $productRepository): Response
     {
         $products = $productRepository->findAll();
@@ -23,7 +23,7 @@ final class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/product/{id}', name: 'getProduct', requirements: ['id' => '\d+'])]
+    #[Route('/product/{id}', name: 'app_getProduct', requirements: ['id' => '\d+'])]
     public function getProduct(ProductRepository $productRepository, int $id): Response
     {
         $product = $productRepository->find($id);

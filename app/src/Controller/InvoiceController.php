@@ -19,7 +19,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class InvoiceController extends AbstractController
 {
-    #[Route('/confirm-order', name: 'confirmOrder')]
+    #[Route('/confirm-order', name: 'app_confirmOrder')]
     #[IsGranted('ROLE_USER')]
     public function confirmOrder(
         #[CurrentUser()] ?User $user,
@@ -81,7 +81,7 @@ final class InvoiceController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('congratsInvoice');
+            return $this->redirectToRoute('app_congratsInvoice');
         }
 
         return $this->render('invoice/informations.html.twig', [
@@ -90,7 +90,7 @@ final class InvoiceController extends AbstractController
         ]);
     }
 
-    #[Route('/invoice/congrats', name: 'congratsInvoice')]
+    #[Route('/invoice/congrats', name: 'app_congratsInvoice')]
     #[IsGranted('ROLE_USER')]
     public function congratsInvoice(): Response
     {
@@ -99,7 +99,7 @@ final class InvoiceController extends AbstractController
         ]);
     }
 
-    #[Route('/invoice/{id}', name: 'createInvoice')]
+    #[Route('/invoice/{id}', name: 'app_createInvoice')]
     #[IsGranted('ROLE_USER')]
     public function createInvoice(int $id, InvoiceRepository $invoiceRepository): Response
     {

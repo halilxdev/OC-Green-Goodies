@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class HomeController extends AbstractController
 {
-    #[Route('/', name: 'home')]
+    #[Route('/', name: 'app_home')]
     public function home(ProductRepository $productRepository): Response
     {
         $homePageProducts = $productRepository->findTheLast9();
@@ -18,7 +18,7 @@ final class HomeController extends AbstractController
             'products'          =>  $homePageProducts,
         ]);
     }
-    #[Route('/terms', name: 'terms')]
+    #[Route('/terms', name: 'app_terms')]
     public function terms(): Response
     {
         return $this->render('home/terms.html.twig', [

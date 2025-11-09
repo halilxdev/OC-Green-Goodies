@@ -66,7 +66,10 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
 
 ### ÉTAPE 4
 
-- [ ] Développer un Controller API
+- [x] Développer un Controller API
+    - [x] Développer des routes fonctionnelles pour l'API
+    - [x] Gestion simple des droits d'accès
+    - [x] Vérification si l'utilisateur a activé l'accès API
 - [ ] EventSubscriber
 - [ ] Se renseigner sur le [CSS/JS Minifier](https://github.com/sensiolabs/minify-bundle)
 

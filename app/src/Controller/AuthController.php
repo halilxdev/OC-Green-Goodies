@@ -15,7 +15,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 final class AuthController extends AbstractController
 {
 
-    #[Route('/register', name: 'register')]
+    #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
@@ -30,7 +30,7 @@ final class AuthController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('app_home');
         }
 
         return $this->render('security/register.html.twig', [
@@ -38,7 +38,7 @@ final class AuthController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/login', name: 'login')]
+    #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -49,7 +49,7 @@ final class AuthController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/logout', name: 'logout')]
+    #[Route(path: '/logout', name: 'app_logout')]
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');

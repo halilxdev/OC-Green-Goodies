@@ -14,11 +14,11 @@
 
         {% if items is not empty %}
 
-            <a href="{{path('clearCart')}}" class="clearCart">x Vider le panier</a>
+            <a href="{{path('app_clearCart')}}" class="clearCart">x Vider le panier</a>
 
             <div class="items">
                 {% for item in items %}
-                    <a href="{{ path('getProduct', {id: item.id}) }}">
+                    <a href="{{ path('app_getProduct', {id: item.id}) }}">
                         <article>
                             <div class="coverImage">
                                 <div class="cropImage">
@@ -40,13 +40,13 @@
                 <p class="orderFee">Frais de livraison : Offert</p>
             </div>
 
-            <a href="{{path('confirmOrder')}}" class="confirmOrder">
+            <a href="{{path('app_confirmOrder')}}" class="confirmOrder">
                 Valider la commande
             </a>
 
         {% else %}
             <p>
-                Votre panier est vide... Retrouvez la liste des produits en cliquant <a href="{{path('getProducts')}}" class="products">ici</a>.
+                Votre panier est vide... Retrouvez la liste des produits en cliquant <a href="{{path('app_getProducts')}}" class="products">ici</a>.
             </p>
         {% endif %}
     
