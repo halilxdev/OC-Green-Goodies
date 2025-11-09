@@ -4,13 +4,18 @@
 
 ## Images
 
-Ancien volume de toutes les images du projet : 73,1 Mo
-Volume des images après une compression via un service web : 13,5 Mo
-Soit une diminution de 81,53 % de son poids original
+Ancien volume de toutes les images du projet : **73,1 Mo**  
+Volume des images après une compression via un service web : **13,5 Mo**  
+Soit une diminution de **81,53 %** de son poids original
 
 ## Base de données
 
+### User
 
+| id | email | roles | password | first_name | last_name | has_api_access |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | halilxvb@outlook.fr | ["ROLE_USER"] | *** | Halil | DDDdddd | 1 |
+| 2 | j.courbet@gmail.com | ["ROLE_USER"] | *** | Julien | Courbet | 0 |
 
 # Produit technique
 
