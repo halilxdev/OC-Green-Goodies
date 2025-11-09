@@ -83,7 +83,7 @@ En cas de souci avec la base de données, supprimez ce qu'il se trouve dans le d
     - [x] Gestion simple des droits d'accès
     - [x] Vérification si l'utilisateur a activé l'accès API
 - [x] EventSubscriber
-- [ ] Se renseigner sur le [CSS/JS Minifier](https://github.com/sensiolabs/minify-bundle)
+- [x] Images compressées & CSS/JS Minifié [CSS/JS Minifier](https://github.com/sensiolabs/minify-bundle)
 
 ### BONUS
 
