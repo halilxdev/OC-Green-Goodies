@@ -13,6 +13,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Callback;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class RegistrationFormType extends AbstractType
 {
@@ -32,7 +34,7 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Vous devez accepter les conditions d\'utilisations pour continuer',
                     ]),
                 ],
             ])
@@ -68,6 +70,22 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'constraints' => [
+                new Callback([$this, 'validatePasswords']),
+            ],
         ]);
+    }
+
+    public function validatePasswords($data, ExecutionContextInterface $context): void
+    {
+        $form = $context->getRoot();
+        $password1 = $form->get('plainPassword1')->getData();
+        $password2 = $form->get('plainPassword2')->getData();
+
+        if ($password1 !== $password2) {
+            $context->buildViolation('Les mots de passe ne correspondent pas.')
+                ->atPath('plainPassword2')
+                ->addViolation();
+        }
     }
 }

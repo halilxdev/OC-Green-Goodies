@@ -42,11 +42,24 @@
                 <div class="colinput">
                     {{ form_label(registrationForm.email) }}
                     {{ form_widget(registrationForm.email) }}
+                    {% if form_errors(registrationForm.email) is not empty %}
+                        <div class="error">
+                            <img src="{{asset('icons/alert-circle-sharp.svg')}}" alt="Icône d'erreur">
+                            <p>{{ form_errors(registrationForm.email) }}</p>
+                        </div>
+                    {% endif %}
                 </div>
 
                 <div class="colinput">
                     {{ form_label(registrationForm.plainPassword1) }}
                     {{ form_widget(registrationForm.plainPassword1) }}
+                    {% if form_errors(registrationForm.plainPassword1) is not empty or form_errors(registrationForm.plainPassword2) is not empty %}
+                        <div class="error">
+                            <img src="{{asset('icons/alert-circle-sharp.svg')}}" alt="Icône d'erreur">
+                            <p>{{ form_errors(registrationForm.plainPassword1) }}</p>
+                            <p>{{ form_errors(registrationForm.plainPassword2) }}</p>
+                        </div>
+                    {% endif %}
                 </div>
 
                 <div class="colinput">

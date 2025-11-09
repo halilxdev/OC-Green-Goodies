@@ -11,12 +11,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 final class AuthController extends AbstractController
 {
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, TokenStorageInterface $tokenStorage): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -30,8 +32,11 @@ final class AuthController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Inscription finalisée ! Nous vous invitons à vous connecter.');
-            return $this->redirectToRoute('app_login');
+            $token = new UsernamePasswordToken($user, 'main', $user->getRoles());
+            $tokenStorage->setToken($token);
+
+            $this->addFlash('success', 'Inscription finalisée ! Vous êtes maintenant connecté.');
+            return $this->redirectToRoute('app_home');
         }
 
         return $this->render('security/register.html.twig', [
