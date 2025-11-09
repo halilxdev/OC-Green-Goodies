@@ -10,6 +10,7 @@ use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -121,19 +122,14 @@ final class OrderController extends AbstractController
                 $entityManager->persist($existingItem);
                 $entityManager->flush();
                 $this->addFlash('success', 'Produit supprimé de votre panier !');
-                return $this->redirectToRoute('app_getProduct', [
-                    'id'                =>  $id,
-                ]);
+            }elseif($qty > 0){
+                // Changer la quantité
+                $existingItem->setQuantity($qty);
+                $entityManager->persist($existingItem);
+                $entityManager->persist($existingItem);
+                $entityManager->flush();
+                $this->addFlash('success', 'Produit mis à jour dans votre panier !');
             }
-            // Changer la quantité
-            $existingItem->setQuantity($qty);
-            $entityManager->persist($existingItem);
-            $entityManager->persist($existingItem);
-            $entityManager->flush();
-            $this->addFlash('success', 'Produit mis à jour dans votre panier !');
-            return $this->redirectToRoute('app_getProduct', [
-                'id'                =>  $id,
-            ]);
         } else {
             // Créer un nouvel item
             $item = new Item();
@@ -141,6 +137,7 @@ final class OrderController extends AbstractController
             $item->setProduct($product);
             $item->setQuantity(1);
             $entityManager->persist($item);
+            $this->addFlash('success', 'Produit ajouté dans votre panier !');
         }
 
         $entityManager->flush(); // Flush pour créer les items en base
@@ -158,7 +155,6 @@ final class OrderController extends AbstractController
         $entityManager->flush(); // Flush final
 
         // Redirection vers la page initiale
-        $this->addFlash('success', 'Produit ajouté dans votre panier !');
         return $this->redirectToRoute('app_getProduct', [
             'id'                =>  $id,
         ]);
